@@ -18,7 +18,7 @@ GEM
       nokogiri (>= 1.10.4)
     i18n (1.5.2)
       concurrent-ruby (~> 1.0)
-    jekyll (3.2.1)
+    jekyll (3.6.3)
       colorator (~> 1.0)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
