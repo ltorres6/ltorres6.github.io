@@ -1,61 +1,73 @@
-# Massively
-> This is Massively, a text-heavy, article-oriented design built around a huge background
-image.
+# Highlights - Jekyll Theme
 
-See a preview of the Massively Jekyll Theme here: [https://iwiedenm.github.io/jekyll-theme-massively/](https://iwiedenm.github.io/jekyll-theme-massively/). <br>
-Massively was originally designed by HTML5UP and Jekyll was integrated by [JekyllUp: Jekyll Themes](https://jekyllup.com)
+A Jekyll version of the "Highlights" theme by [HTML5 UP](https://html5up.net/).
 
-## How to Use This Theme
-Jekyll consumes themes in two flavors; gem-based or spread across multiple folders
-in the site source. This port is of the second type. Concretely, it means that you
-can simply grab the [zip][zip] or clone this repository, run `bundle install`
-in the new directory and finally `bundle exec jekyll serve`.
-You can now access your brand-new Jekyll site on [http://127.0.0.1:4000/][local].
-Enjoy!
+![Highlights Theme](assets/images/highlights.jpg "Highlights Theme")
 
-If you're completely new to Jekyll, check out it's [documentation][jekyll] first.
-It's not too hard, we promise!
+# How to Use
 
-[zip]: https://github.com/iwiedenm/jekyll-theme-massively-src/archive/master.zip
-[local]: http://127.0.0.1:4000/
-[jekyll]: https://jekyllrb.com/
+For those unfamiliar with how Jekyll works, check out [https://jekyllrb.com/](https://jekyllrb.com/) for all the details,
+or read up on just the basics of [front matter](https://jekyllrb.com/docs/frontmatter/), [writing posts](https://jekyllrb.com/docs/posts/),
+and [creating pages](https://jekyllrb.com/docs/pages/).
 
-## Features
+- **GitLab**: Simply fork this repository and start editing the `_config.yml` file!  
+- **GitHub**: Fork this reposity and create a branch named `gh-pages`, then start editing the `_config.yml` file!
 
-### Slapform.com Integration
-[Slapform](https://slapform.com) is supported out of the box! Just add your email to ```_config.yml``` and test the form.
-Every time one of your visitors submits the form, you'll get an email straight to your inbox containing the submission so you can get back to them right away. Slapform is very extendable, including AJAX submissions, webhooks, and more.
+# Issues
 
-### Auto-Generating Sitemap
-The sitemap is auto generated! Just simply change the sitemap variable in front matter of each page. It looks like so...
+If you would like to report a bug, ask a question, request a feature, feel free to do so on [the GitLab repository](https://gitlab.com/andrewbanchich/highlights-jekyll-theme) and I will be more than happy to help!
+
+Alternatively, you can open an issue via email by emailing [incoming+andrewbanchich/highlights-jekyll-theme@incoming.gitlab.com](mailto:incoming+andrewbanchich/highlights-jekyll-theme@incoming.gitlab.com).
+
+The GitHub repository is simply a mirror of the GitLab repository.
+
+# Added Features
+
+* **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
+* Add your **social profiles** easily in `_config.yml`.
+
+# Configuration
+
+You can use the following custom parameters in `_config.yml`.
+
+## Social settings
+
+- `500px_url`
+- `facebook_url`
+- `github_url`
+- `gitlab_url`
+- `googleplus_url`
+- `instagram_url`
+- `linkedin_url`
+- `pinterest_url`
+- `slack_url`
+- `twitter_url`
+
+# Credits
+
+Original README from HTML5 UP:
+
 ```
-sitemap:
-  priority: 0.7
-  lastmod: 2017-11-02
-  changefreq: weekly
-```
-
-## Credits
-### Original README from HTML5 UP
-```
-Massively by HTML5 UP
+Highlights by HTML5 UP
 html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
 
-This is Massively, a text-heavy, article-oriented design built around a huge background
-image (with a new parallax implementation I'm testing) and scroll effects (powered by
-Scrollex). A *slight* departure from all the one-pagers I've been doing lately, but one
-that fulfills a few user requests and makes use of some new techniques I've been wanting
-to try out. Enjoy it :)
+Just a fun little single pager I whipped up to test out my new scroll events plugin
+(github.com/ajlkn/jquery.scrollex). Clean, simple, fully responsive, and loaded with
+all the usual pre-styled elements. Enjoy :)
 
 Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
 you can use for pretty much whatever.
 
-(* = not included)
+(* = Not included)
+
+Feedback, bug reports, and comments are not only welcome, but strongly encouraged :)
 
 AJ
 aj@lkn.io | @ajlkn
+
+PS: Not sure how to get that contact form working? Give formspree.io a try (it's awesome).
 
 
 Credits:
@@ -68,7 +80,10 @@ Credits:
 
 	Other:
 		jQuery (jquery.com)
-		Misc. Sass functions (@HugoGiraudel)
+		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
+		Respond.js (j.mp/respondjs)
 		Skel (skel.io)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
+
 ```
+
+Repository [Jekyll logo](https://github.com/jekyll/brand) icon licensed under a [Creative Commons Attribution 4.0 International License](http://choosealicense.com/licenses/cc-by-4.0/).
