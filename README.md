@@ -1,79 +1,89 @@
-# Wall-E
+# Highlights - Jekyll Theme
 
-Wall-E is a modern Jekyll template with a magazine-like grid layout on the frontpage, beautiful typography and uncomplicated content. 
+A Jekyll version of the "Highlights" theme by [HTML5 UP](https://html5up.net/).
 
-<img src="https://github.com/abhn/Wall-E/blob/master/tmp/desktop.png?raw=true">
+![Highlights Theme](assets/images/highlights.jpg "Highlights Theme")
 
-## Demo
-[wall-e-jekyll.github.io/](https://wall-e-jekyll.github.io/)
+# How to Use
 
-## Contents
+For those unfamiliar with how Jekyll works, check out [https://jekyllrb.com/](https://jekyllrb.com/) for all the details,
+or read up on just the basics of [front matter](https://jekyllrb.com/docs/frontmatter/), [writing posts](https://jekyllrb.com/docs/posts/),
+and [creating pages](https://jekyllrb.com/docs/pages/).
 
-- [Features](#features)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Screenshots](#screenshots-desktop)
-    - [Desktop](#screenshots-desktop)
-    - [Mobile](#screenshots-mobile)
-- [Credits](#credits)
-- [License](#license)
+- **GitLab**: Simply fork this repository and start editing the `_config.yml` file!  
+- **GitHub**: Fork this reposity and create a branch named `gh-pages`, then start editing the `_config.yml` file!
 
-## Features
+# Issues
 
-- Mobile responsive, built with Semantic UI, customization is easy
-- Disqus is integrated by default
-- One column layout suitable for personal blogs with focus on content
-- Beautiful typography (uses League Gothic and Open Sans)
-- Feature image can be added to homescreen post cards
-- Search box links to Google search by default
+If you would like to report a bug, ask a question, request a feature, feel free to do so on [the GitLab repository](https://gitlab.com/andrewbanchich/highlights-jekyll-theme) and I will be more than happy to help!
 
-## Usage
+Alternatively, you can open an issue via email by emailing [incoming+andrewbanchich/highlights-jekyll-theme@incoming.gitlab.com](mailto:incoming+andrewbanchich/highlights-jekyll-theme@incoming.gitlab.com).
 
-Wall-E is fully furnished right out of the box. To use this template on your blog
-- If this is your first Jekyll blog, follow this <a href="https://jekyllrb.com/docs/installation/">helpful guide</a> to set up Jekyll.
-- Fork this repository, rename the fork as `your-username.github.io`. Your blog should immediately be live on `https://your-username.github.io`
-- Clone your fork
-- Delete everything in `_posts` directory. Delete the `tmp` directory.
-- Open `_config.yml` and set the variables
-- Open `_includes/disqus.html` and `_includes/disqus-count.html` and replace the value of `disqus_shortname` variable to your Disqus username
-- Run `jekyll serve` and your blog should be live on `http://localhost:4000`. Make changes, test them locally, commit your changes and push to your fork. Your changes should be live in a couple of seconds
+The GitHub repository is simply a mirror of the GitLab repository.
 
-## Customization
-- `_includes/author.html`: Add your name, link to a profile picture and a short author description that appears on the bottom of each post. See <a href="https://semantic-ui.com/views/item.html">Semantic Link</a> docs.
-- `_includes/card.html`: Cards can be customized to show the essential info about a post (feature image, catagory, tags, comment count etc). See <a href="https://semantic-ui.com/views/card.html">Semantic Card</a> docs.
-- `_includes/header.html`: Replace the site logo here. Add/replace frequently visited pages and/or social links here.
-- `_includes/footer.html`: Add your copyrights, if any, here. Also link to the less frequently visited pages and/or social links here.
-- `assets/css/main.css` and `assets/css/mobile.css`: Global and mobile specific CSS files respectively
-- `assets/js/main.js`: Any common javascript goes here. If you wish to customize the search behaviour (for example, use a different search engine), that can be done here.
+# Added Features
 
-## Screenshots (Desktop)
+* **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
+* Add your **social profiles** easily in `_config.yml`.
 
-### Homepage
-<img src="https://github.com/abhn/Wall-E/blob/master/tmp/desktop.png?raw=true">
+# Configuration
 
-### Sample post
-<img src="https://github.com/abhn/Wall-E/blob/master/tmp/desktop-post.png?raw=true">
+You can use the following custom parameters in `_config.yml`.
 
-## Screenshots (Mobile)
+## Social settings
 
-### Homepage (Portrait)
-<img width="50%" src="https://github.com/abhn/Wall-E/blob/master/tmp/mobile.png?raw=true">
+- `500px_url`
+- `facebook_url`
+- `github_url`
+- `gitlab_url`
+- `googleplus_url`
+- `instagram_url`
+- `linkedin_url`
+- `pinterest_url`
+- `slack_url`
+- `twitter_url`
 
-### Homepage (Landscape)
-<img src="https://github.com/abhn/Wall-E/blob/master/tmp/mobile-landscape.png?raw=true">
+# Credits
 
-### Sample post (Portrait)
-<img width="50%" src="https://github.com/abhn/Wall-E/blob/master/tmp/mobile-post.png?raw=true">
+Original README from HTML5 UP:
 
-### Footer (Landscape)
-<img src="https://github.com/abhn/Wall-E/blob/master/tmp/mobile-landscape-footer.png?raw=true">
+```
+Highlights by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
 
-## Credits
-- <a href="https://demo.ghost.io">Ghost</a> blogging platform's demo page for inspiration (and the header background image).
-- <a href="http://www.jeanchristophebonis.com/">For the Wall-E image used everywhere</a>
-- <a href="https://semantic-ui.com">Semantic UI</a>
+Just a fun little single pager I whipped up to test out my new scroll events plugin
+(github.com/ajlkn/jquery.scrollex). Clean, simple, fully responsive, and loaded with
+all the usual pre-styled elements. Enjoy :)
 
-## License
+Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
+you can use for pretty much whatever.
 
-Open sourced under the [MIT license](LICENSE.md) <3
+(* = Not included)
+
+Feedback, bug reports, and comments are not only welcome, but strongly encouraged :)
+
+AJ
+aj@lkn.io | @ajlkn
+
+PS: Not sure how to get that contact form working? Give formspree.io a try (it's awesome).
+
+
+Credits:
+
+	Demo Images:
+		Unsplash (unsplash.com)
+
+	Icons:
+		Font Awesome (fortawesome.github.com/Font-Awesome)
+
+	Other:
+		jQuery (jquery.com)
+		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
+		Respond.js (j.mp/respondjs)
+		Skel (skel.io)
+
+```
+
+Repository [Jekyll logo](https://github.com/jekyll/brand) icon licensed under a [Creative Commons Attribution 4.0 International License](http://choosealicense.com/licenses/cc-by-4.0/).
