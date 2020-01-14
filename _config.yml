@@ -55,9 +55,9 @@ type-speed: 10
 start-delay: 200
 delete-delay: 5000
 lines: # You can add HTML Tags in the Text
-  - text: "Welcome!"
-  - text: "This is where you can snoop--- I mean... check out what I'm doing with my life"
-  - text: ""
+  - text: "Welcome Friends!"
+  - text: "This is where you can cree- I mean... check in on what I'm doing with my life."
+  - text: "Work in progress, someday this will be a full webpage!"
 
 me-img: "/img/brain.jpg"
 
@@ -186,7 +186,7 @@ err-404-img: "/img/labtocat.png"
 # GPG on Keybase #
 ##################
 
-keybase-username: 
+keybase-username:
 keybase-in-social: False
 keybase-in-footer: False
 
