@@ -1,7 +1,9 @@
 ---
 layout: post
 section-type: post
-title: Title
-category: Category
-tags: [ 'tag1', 'tag2' ]
+title: My very first blog.
+category: random
+tags: [ 'first', 'blog' ]
 ---
+
+Hi Mom!
