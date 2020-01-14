@@ -157,7 +157,7 @@ email: "ltorres6@wisc.edu"
 # This works best when your author blurb image has a transparent background, or matches your site background color.
 
 # if the author_blurb is not set, then this feature is skipped
-author_blurb: "John Smith is an awesome person. He lives in Flatland, where he works on two-dimensional engineering projects. In his spare time, John likes to eat cotton candy."
+author_blurb: "Luis Torres is a graduate student in Medical Physics at the University of Wisconsin - Madison. When he's not procrastinating, he works on medical image reconstruction and post-processing. When he's not staying busy procrastinating at work, he enjoys spending time with his partner and dogs."
 author_blurb_image: "/img/author.png"
 
 ##################
