@@ -29,10 +29,10 @@ force-https: True
 #############
 
 lang: "en"
-author: "John Smith"
-title: "{ John Smith }"
-description: "Blog and website of John Smith, blogging mainly for tech. Opinions expressed are mine."
-keywords: "smith, jones, personal, jekyll, theme"
+author: "Luis Torres"
+title: "{ Luis Torres }"
+description: "Personal Website of Luis Torres, enter at your own risk."
+keywords: "luis, torres, mri, magnetic, resonance, personal"
 favicon: "/img/favicon.ico"
 
 ################
@@ -58,7 +58,7 @@ lines: # You can add HTML Tags in the Text
   - text: "The lower you fall, the higher you'll fly."
   - text: "Where’s your will to be weird?"
 
-me-img: "/img/jetpacktocat.png"
+#me-img: "/img/brain.jpg"
 
 # To use facebook profile pic comment the previous line and uncomment the following
 # line, and replace 'user_id' with your facebook user id.
@@ -66,7 +66,7 @@ me-img: "/img/jetpacktocat.png"
 # in the end of the url just before '&type' is your user id.
 # Note: fbid is not the same as user id and user id only contains numbers
 
-# me-img: "https://graph.facebook.com/user_id/picture?type=large&width=500&height=500"
+me-img: "https://graph.facebook.com/10155824061003223/picture?type=large&width=500&height=500"
 
 # To use github profile pic uncomment the following line and replace 'user_name'
 # with your github user name.
@@ -146,7 +146,7 @@ timeline-img: "/img/timeline/default.png"
 # Contact #
 ###########
 
-email: "your@email.here"
+email: "ltorres6@wisc.edu"
 
 ################
 # Author Blurb #
