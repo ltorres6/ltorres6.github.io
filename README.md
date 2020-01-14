@@ -1,21 +1,25 @@
-# Jekyll template
-Beautiful responsive portfolio style template for designers and web developers
+# Slate+Simple Jekyll Theme
 
-[![Gitter](https://badges.gitter.im/nikrich/jekyll-slender-template.svg)](https://gitter.im/nikrich/jekyll-slender-template?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Twitter](https://img.shields.io/badge/Twitter-@slender_rich-blue.svg?style=flat)](https://twitter.com/slender_rich)
+Slate+Simple is a sleek and minimalistic theme for Jekyll blogs. It is based on the [Clean+Simple Theme](https://github.com/nathanrooy/Clean-and-Simple-Jekyll-Theme) by [Nathan Rooy](https://nathanrooy.github.io). 
 
-![preview](http://i.imgur.com/9Nz6Ib9.jpg)
+[Live demo.](https://benradford.github.io)
 
-## Demo
-Find a demo [here](http://nikrich.github.io/jekyll-slender-template/#)
+Slate+Simple is a light-on-dark theme that features crisp typography and includes featured images for posts. It is easily modified and provided under the MIT open source license to encourage community modifications and improvements. 
 
-## Contributing
+<figure>
+<img src="slate+simple_screenshot.png">
+</figure>
 
-1. Clone the repo
-2. Checkout the dev branch ( Do not work directly on master )
-3. Use ```jekyll serve``` to run the project
-4. Make your changes and test
-5. Submit a pull request
+YAML headers include support for:
+
+* title
+* subtitle
+* author
+* featured-image
+* date-string
+* categories
+* tags
+
+Additionally, Slate+Simple supports [MathJax](https://www.mathjax.org) for beautiful equations and [Font Awesome](http://fontawesome.io/icons/). LaTeX math wrapped in `$$` will automatically compile to in-line or block images of formatted equations. Font awesome icons are included with the `i` tag. For example: `<i class='fa fa-github-alt'></i>`.
 
 
-Inspired by [Balraj Chana](https://dribbble.com/shots/2380700-New-Portfolio-Site-Live)

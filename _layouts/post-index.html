@@ -29,47 +29,9 @@
 <body id="post-index">
     {% include browser-upgrade.html %}
 
+    <!-- MAIN -->
     <div id="main" role="main">
-        <article class="hentry">
-
-            <div class="featured-image">
-            <img src="{{ page.featured-image}}" style="width:100%">
-            </div>
-
-            <!-- MAIN -->
-            <h1 class="entry-title">
-                <a>{{ page.title }}</a>
-            </h1>
-            <h3 class="entry-subtitle">
-                <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ page.subtitle }}</a>
-            </h3>
-
-            <hr>
-
-            <!-- POST CONTENT -->
-            <div class="entry-content">
-                {{ page.content }}
-            </div>
-
-            <!--- DIVIDING LINE -->
-            <hr>
-
-            <!-- POST TAGS -->
-            <div class="inline-tags">
-                <span>
-                    {% for tag in page.tags %}
-                        <a href="/tags/#{{tag}}">#{{ tag }}&nbsp;&nbsp;&nbsp;</a>
-                    {% endfor %}
-                </span>
-            </div>
-
-            <br>
-
-            <!-- POST DATE -->
-            <div class="post-date">
-                {{ page.date-string }}
-            </div>
-        </article>
+      {{ content }}
     </div>
 </body>
 
