@@ -48,16 +48,16 @@ background-img: "../img/intro-bg.jpg"
 ##############################
 
 dynamic-typing: True
-shuffle: True # Shuffle the lines.
+shuffle: False #True # Shuffle the lines.
 loop: True
 loop-count: False # Set False for infinite loop, or set any number for finite loop.
 type-speed: 10
 start-delay: 200
 delete-delay: 5000
 lines: # You can add HTML Tags in the Text
-  - text: "Steve, you still suck."
-  - text: "Where’s your will to be weird?"
-  - text: "Some other phrase here...."
+  - text: "Welcome!"
+  - text: "This is where you can snoop--- I mean... check out what I'm doing with my life"
+  - text: ""
 
 me-img: "/img/brain.jpg"
 
