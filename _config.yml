@@ -41,7 +41,7 @@ favicon: "/img/favicon.ico"
 
 black-favicon: "/img/black-lab-glass.ico"
 
-background-img: "../img/intro-bg.jpg"
+background-img: "../img/cancun.jpg"
 
 ##############################
 # Dynamic Text on the Header #
@@ -59,7 +59,7 @@ lines: # You can add HTML Tags in the Text
   - text: "This is where you can cree- I mean... check in on what I'm doing with my life..."
   - text: "This is currently a work in progress. Come back soon for updates!"
 
-me-img: "/img/cancun.jpg"
+me-img: "/img/brain.jpg"
 
 # To use facebook profile pic comment the previous line and uncomment the following
 # line, and replace 'user_id' with your facebook user id.
