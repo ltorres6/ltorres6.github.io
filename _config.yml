@@ -56,8 +56,8 @@ start-delay: 200
 delete-delay: 4000
 lines: # You can add HTML Tags in the Text
   - text: "Welcome Friends..."
-  - text: "This is where you can cree- I mean... check in on what I'm doing with my life."
-  - text: "This is currently a work in progress!!"
+  - text: "This is where you can cree- I mean... check in on what I'm doing with my life..."
+  - text: "This is currently a work in progress. Come back soon for updates!"
 
 me-img: "/img/brain.jpg"
 
@@ -167,15 +167,17 @@ author_blurb_image: "/img/author.png"
 
 social:
   - title: "facebook"
-    url: "https://facebook.com/"
+    url: "https://facebook.com/luigibytes"
   - title: "twitter"
-    url: "https://twitter.com/"
-  - title: "github"
-    url: "https://github.com/PanosSakkos/personal-jekyll-theme"
-  - title: "bitcoin"
-    url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
-  - title: "rss"
-    url: "/feed.xml"
+    url: "https://twitter.com/luigibytes"
+  - title: "instagram"
+    url: "https://www.instagram.com/luigibytes/"
+#  - title: "github"
+#    url: "https://github.com/PanosSakkos/personal-jekyll-theme"
+#  - title: "bitcoin"
+#    url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
+#  - title: "rss"
+#    url: "/feed.xml"
 
 ############
 # 404 page #
