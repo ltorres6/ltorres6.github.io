@@ -33,13 +33,13 @@ author: "Luis A. Torres"
 title: "{ Luis A. Torres }"
 description: "This is my personal website. Here you will find info on my personal adventures as well as some of my MRI related projects!"
 keywords: "luis, torres, mri, magnetic, resonance, personal, adventure"
-favicon: "/img/favicon-16x16.png"
+favicon: "/img/kiba_favicon.png"
 
 ################
 # Header layout #
 ################
 
-black-favicon: "/img/favicon-16x16.png"
+black-favicon: "/img/kiba_favicon.png"
 
 background-img: "../img/bg_sand.jpg"
 
