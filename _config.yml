@@ -29,10 +29,10 @@ force-https: True
 #############
 
 lang: "en"
-author: "Luis Torres"
-title: "{ Luis Torres }"
-description: "Personal Website of Luis Torres, enter at your own risk."
-keywords: "luis, torres, mri, magnetic, resonance, personal"
+author: "Luis A. Torres"
+title: "{ Luis A. Torres }"
+description: "This is my personal website. Here you will find info on my personal adventures as well as some of my MRI related projects!"
+keywords: "luis, torres, mri, magnetic, resonance, personal, adventure"
 favicon: "/img/favicon.ico"
 
 ################
@@ -53,11 +53,11 @@ loop: True
 loop-count: False # Set False for infinite loop, or set any number for finite loop.
 type-speed: 10
 start-delay: 200
-delete-delay: 5000
+delete-delay: 4000
 lines: # You can add HTML Tags in the Text
   - text: "Welcome Friends!"
   - text: "This is where you can cree- I mean... check in on what I'm doing with my life."
-  - text: "Work in progress, someday this will be a full webpage!"
+  - text: "This is currently a work in progress!!"
 
 me-img: "/img/brain.jpg"
 
