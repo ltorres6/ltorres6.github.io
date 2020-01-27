@@ -55,7 +55,7 @@ type-speed: 15
 start-delay: 200
 delete-delay: 4000
 lines: # You can add HTML Tags in the Text
-  - text: "Welcome Friends!"
+  - text: "Welcome Friends..."
   - text: "This is where you can cree- I mean... check in on what I'm doing with my life."
   - text: "This is currently a work in progress!!"
 
