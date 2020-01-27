@@ -51,7 +51,7 @@ dynamic-typing: True
 shuffle: False #True # Shuffle the lines.
 loop: True
 loop-count: False # Set False for infinite loop, or set any number for finite loop.
-type-speed: 10
+type-speed: 15
 start-delay: 200
 delete-delay: 4000
 lines: # You can add HTML Tags in the Text
