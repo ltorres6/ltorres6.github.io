@@ -39,7 +39,7 @@ favicon: "/img/kiba_bw2.png"
 # Header layout #
 ################
 
-black-favicon: "/img/kiba_bw.png"
+black-favicon: "/img/favicon-16x16.png"
 
 background-img: "../img/bg_sand.jpg"
 
