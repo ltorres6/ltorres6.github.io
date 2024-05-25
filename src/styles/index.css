@@ -1,98 +1,102 @@
 :root {
-    --background-color: #2E3A59;
-    /* Slate Gray */
-    --text-color: #A9A9A9;
-    /* Soft Gray */
-    --primary-color: #252424;
-    /* Dark Charcoal */
-    --accent-color: #D3D3D3;
-    /* Light Gray */
+  --background-color: #2e3a59;
+  /* Slate Gray */
+  --text-color: #a9a9a9;
+  /* Soft Gray */
+  --primary-color: #252424;
+  /* Dark Charcoal */
+  --accent-color: #d3d3d3;
+  /* Light Gray */
 }
 
 body {
-    background: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s, color 0.3s;
+  background: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s, color 0.3s;
 }
 
 header,
 footer {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    padding: 1rem;
-    text-align: center;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 1rem;
+  text-align: center;
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 1rem;
+  display: inline;
+  margin: 0 1rem;
 }
 
 nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 button {
-    background-color: var(--accent-color);
-    color: var(--background-color);
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 button:hover {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 main {
-    background: linear-gradient(0deg, var(--background-color) 0%, var(--primary-color) 100%);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 1rem;
+  background: linear-gradient(
+    0deg,
+    var(--background-color) 0%,
+    var(--primary-color) 100%
+  );
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 1rem;
 }
 
 h1,
 h2 {
-    color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 a {
-    color: var(--accent-color);
-    text-decoration: none;
+  color: var(--accent-color);
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Add the following CSS to center content on the developer page */
 .center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .center-content section {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .center-content h1 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .center-content h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
