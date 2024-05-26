@@ -2,7 +2,7 @@ import React from 'react';
 import GitHubCalendarComponent from '../components/GitHubCalendarComponent';
 import GitLabCalendarComponent from '../components/GitLabCalendarComponent';
 
-const Developer: React.FC = () => {
+const Developer = () => {
   const githubUsername = 'ltorres6';
   const gitlabUsername = 'luistorres2';
 
@@ -11,11 +11,17 @@ const Developer: React.FC = () => {
       <h1>Look at me go!</h1>
       <section>
         <h2>GitHub Contributions</h2>
-        <GitHubCalendarComponent username={githubUsername} />
+        <GitHubCalendarComponent
+          username={githubUsername}
+          themeType="explicit"
+        />
       </section>
       <section>
         <h2>GitLab Contributions</h2>
-        <GitLabCalendarComponent username={gitlabUsername} />
+        <GitLabCalendarComponent
+          username={gitlabUsername}
+          themeType="explicit"
+        />
       </section>
     </main>
   );
