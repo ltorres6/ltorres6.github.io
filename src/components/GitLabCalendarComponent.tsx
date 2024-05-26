@@ -33,7 +33,7 @@ const fetchCalendarData = async (
   lastYearISO: string,
   todayISO: string,
   page: number,
-): Promise<ApiResponse> => {
+): Promise<any> => {
   const response = await fetch(
     `https://gitlab.com/api/v4/users/${username}/events?after=${lastYearISO}&before=${todayISO}&page=${page}&per_page=100`,
   );
@@ -54,7 +54,7 @@ const fetchAllData = async (username: string): Promise<ApiResponse> => {
   const todayISO = today.toISOString().split('T')[0]; // Format to YYYY-MM-DD
 
   let page = 1;
-  const contributionsData: { [date: string]: number } = {};
+  let contributionsData: { [date: string]: number } = {};
   let hasMoreData = true;
 
   while (hasMoreData) {
@@ -62,7 +62,7 @@ const fetchAllData = async (username: string): Promise<ApiResponse> => {
     if (data.length === 0) {
       hasMoreData = false;
     } else {
-      data.forEach((event: ApiResponse) => {
+      data.forEach((event: any) => {
         const date = event.created_at.substring(0, 10);
         contributionsData[date] = (contributionsData[date] || 0) + 1;
       });
@@ -84,11 +84,11 @@ const fetchAllData = async (username: string): Promise<ApiResponse> => {
   };
 };
 
-const cacheData = (key: string, data: ApiResponse) => {
+const cacheData = (key: string, data: any) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
-const getCachedData = (key: string): ApiResponse => {
+const getCachedData = (key: string): any => {
   const cached = localStorage.getItem(key);
   return cached ? JSON.parse(cached) : null;
 };
@@ -133,8 +133,8 @@ const GitLabCalendarComponent: FunctionComponent<Props> = ({
       const fetchedData = await fetchAllData(username);
       setData(fetchedData);
       cacheData(cacheKey, fetchedData);
-    } catch (err: ApiResponse) {
-      setError(err);
+    } catch (err: unknown) {
+      setError(err as Error);
     } finally {
       setLoading(false);
     }
