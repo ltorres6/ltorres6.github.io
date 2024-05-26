@@ -25,6 +25,7 @@ interface Props {
   throwOnError?: boolean;
   transformData?: (data: Array<Activity>) => Array<Activity>;
   transformTotalCount?: boolean;
+  labels?: Record<string, string>;
 }
 
 const fetchCalendarData = async (
@@ -32,7 +33,7 @@ const fetchCalendarData = async (
   lastYearISO: string,
   todayISO: string,
   page: number,
-): Promise<any> => {
+): Promise<ApiResponse> => {
   const response = await fetch(
     `https://gitlab.com/api/v4/users/${username}/events?after=${lastYearISO}&before=${todayISO}&page=${page}&per_page=100`,
   );
@@ -53,7 +54,7 @@ const fetchAllData = async (username: string): Promise<ApiResponse> => {
   const todayISO = today.toISOString().split('T')[0]; // Format to YYYY-MM-DD
 
   let page = 1;
-  let contributionsData: { [date: string]: number } = {};
+  const contributionsData: { [date: string]: number } = {};
   let hasMoreData = true;
 
   while (hasMoreData) {
@@ -61,7 +62,7 @@ const fetchAllData = async (username: string): Promise<ApiResponse> => {
     if (data.length === 0) {
       hasMoreData = false;
     } else {
-      data.forEach((event: any) => {
+      data.forEach((event: ApiResponse) => {
         const date = event.created_at.substring(0, 10);
         contributionsData[date] = (contributionsData[date] || 0) + 1;
       });
@@ -83,11 +84,11 @@ const fetchAllData = async (username: string): Promise<ApiResponse> => {
   };
 };
 
-const cacheData = (key: string, data: any) => {
+const cacheData = (key: string, data: ApiResponse) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
-const getCachedData = (key: string): any => {
+const getCachedData = (key: string): ApiResponse => {
   const cached = localStorage.getItem(key);
   return cached ? JSON.parse(cached) : null;
 };
@@ -132,7 +133,7 @@ const GitLabCalendarComponent: FunctionComponent<Props> = ({
       const fetchedData = await fetchAllData(username);
       setData(fetchedData);
       cacheData(cacheKey, fetchedData);
-    } catch (err: any) {
+    } catch (err: ApiResponse) {
       setError(err);
     } finally {
       setLoading(false);
