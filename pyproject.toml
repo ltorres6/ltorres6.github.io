@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ltorres6-github-io"
+version = "0.1.0"
+description = ""
+authors = ["Luis Torres <luigibytes@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ltorres6"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scholarly = "^1.7.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
