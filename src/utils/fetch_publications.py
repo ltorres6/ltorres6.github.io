@@ -35,7 +35,7 @@ def fetch_scholar_data(user_id):
         })
 
     # Save the result to a JSON file
-    with open('src/assets/publications.json', 'w') as f:
+    with open('public/assets/publications.json', 'w') as f:
         json.dump(result, f, indent=2)
 
 if __name__ == "__main__":

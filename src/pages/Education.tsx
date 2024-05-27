@@ -34,7 +34,7 @@ const Education: React.FC = () => {
   const [scholarData, setScholarData] = useState<Publication[]>([]);
 
   useEffect(() => {
-    fetch('/src/assets/publications.json')
+    fetch('/assets/publications.json')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
