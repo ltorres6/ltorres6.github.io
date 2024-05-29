@@ -9,6 +9,7 @@ packages = [{include = "ltorres6"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 scholarly = "^1.7.11"
+aiohttp = "^3.9.5"
 
 
 [build-system]
