@@ -5,6 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luis Torres, PhD</title>
+    <script type="text/javascript">
+      // Check if there's a redirect path in the URL
+      var params = new URLSearchParams(window.location.search);
+      var redirectPath = params.get('redirect');
+      if (redirectPath) {
+        // Remove the query parameter and navigate to the original path
+        window.history.replaceState({}, '', redirectPath);
+      }
+    </script>
   </head>
 
   <body>

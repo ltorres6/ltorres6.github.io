@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Page Not Found</title>
-    <meta http-equiv="refresh" content="0; URL=./index.html" />
-    <script>
-      setTimeout(function () {
-        window.location.href = './index.html';
-      }, 100);
+    <script type="text/javascript">
+      // Save the current path
+      var path = window.location.pathname;
+      // Redirect to index.html without changing the URL
+      window.location.replace('/index.html?redirect=' + path);
     </script>
   </head>
 
