@@ -55,6 +55,12 @@ const Home: React.FC = () => {
             <p>Explore my projects and repositories.</p>
           </article>
         </Link>
+        <Link to="/resume" className="highlight-link">
+          <article className="highlight">
+            <h2>Resume</h2>
+            <p>Check out my resume if you want.</p>
+          </article>
+        </Link>
       </section>
     </main>
   );
