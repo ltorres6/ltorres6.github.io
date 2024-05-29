@@ -22,16 +22,19 @@ const Header: React.FC = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/projects">Projects</Link>
           </li>
           <li>
             <Link to="/education">Education</Link>
           </li>
           <li>
-            <Link to="/developer">Develop</Link>
+            <Link to="/publications">Publications</Link>
           </li>
           <li>
-            <Link to="/resume">Resume</Link>
+            <Link to="/about">About Me</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </nav>

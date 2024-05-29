@@ -1,14 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import EducationCard from '../components/EducationCard';
-
-interface Publication {
-  title: string;
-  authors: string;
-  journal: string;
-  year: number | string;
-  citations: number;
-  url?: string; // Ensure the Publication interface includes the URL field
-}
 
 const educationData = [
   {
@@ -31,20 +22,6 @@ const educationData = [
 ];
 
 const Education: React.FC = () => {
-  const [scholarData, setScholarData] = useState<Publication[]>([]);
-
-  useEffect(() => {
-    fetch('/assets/publications.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => setScholarData(data))
-      .catch((error) => console.error('Error fetching publications:', error));
-  }, []);
-
   return (
     <main>
       <h1>Education</h1>
@@ -56,7 +33,6 @@ const Education: React.FC = () => {
           summary={edu.summary}
         />
       ))}
-      <EducationCard scholarData={scholarData} />
     </main>
   );
 };

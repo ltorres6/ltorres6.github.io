@@ -2,7 +2,7 @@ import React from 'react';
 import GitHubCalendarComponent from '../components/GitHubCalendarComponent';
 import GitLabCalendarComponent from '../components/GitLabCalendarComponent';
 
-const Developer = () => {
+const Projects = () => {
   const githubUsername = 'ltorres6';
   const gitlabUsername = 'luistorres2';
 
@@ -27,4 +27,4 @@ const Developer = () => {
   );
 };
 
-export default Developer;
+export default Projects;

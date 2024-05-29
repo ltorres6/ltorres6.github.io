@@ -1,0 +1,63 @@
+.home-page {
+  text-align: center;
+  color: var(--text-color);
+  background: var(--background-color);
+  padding: 2rem;
+}
+
+.hero-section {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--background-color) 100%
+  );
+  color: var(--accent-color);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.hero-section p {
+  margin: 1rem 0 0;
+  font-size: 1.25rem;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.highlight-link {
+  text-decoration: none;
+  width: calc(50% - 2rem);
+  margin: 1rem;
+}
+
+.highlight {
+  background-color: var(--resume-background-color);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.highlight:hover {
+  background-color: #394867;
+  /* Slightly lighter than --background-color for hover effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.highlight h2 {
+  color: var(--accent-color);
+}
+
+.highlight p {
+  margin: 0.5rem 0 0;
+}
