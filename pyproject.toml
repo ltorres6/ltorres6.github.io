@@ -7,9 +7,10 @@ readme = "README.md"
 packages = [{include = "ltorres6"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 scholarly = "^1.7.11"
 aiohttp = "^3.9.5"
+pre-commit = "^3.7.1"
 
 
 [build-system]
