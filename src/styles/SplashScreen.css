@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jaini&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
 .splash-screen {
   position: fixed;
@@ -16,11 +16,11 @@
 }
 
 .splash-screen.exit {
-    transform: rotate(360deg) scale(0);
-    filter: blur(10px);
-    opacity: 0;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-  }
+  transform: rotate(360deg) scale(0);
+  filter: blur(10px);
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
 
 .splash-circle {
   width: 150px;
@@ -39,9 +39,9 @@
 }
 
 .signature {
-  font-family: 'Jaini', 'Brush Script MT', cursive; /* Use the loaded font */
-  font-size: 3em; /* Increase the font size */
-  line-height: 1; /* Adjust to match the text height */
+  font-family: 'Shadows Into Light', 'Brush Script MT', cursive; /* Use the loaded font */
+  font-size: 6em; /* Increase the font size */
+  line-height: 0; /* Adjust to match the text height */
   color: var(--accent-color);
   white-space: nowrap;
   overflow: hidden;
