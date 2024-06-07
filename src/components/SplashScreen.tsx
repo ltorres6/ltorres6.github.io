@@ -1,40 +1,15 @@
-// src/components/SplashScreen.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../styles/SplashScreen.css';
 
-interface SplashScreenProps {
-  isExiting: boolean;
-  onClick: () => void;
-}
-
-const SplashScreen: React.FC<SplashScreenProps> = ({ isExiting, onClick }) => {
-  const [showProceedMessage, setShowProceedMessage] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowProceedMessage(true);
-    }, 2000); // Delay to show the proceed message after the main animation
-
-    return () => clearTimeout(timer);
-  }, []);
-
+const SplashScreen: React.FC = () => {
   return (
-    <div
-      id="splash-screen"
-      className={`splash-screen ${isExiting ? 'exit' : ''}`}
-      onClick={onClick}
-    >
-      <div className="splash-circle">
-        <img src="/assets/pedro.webp" alt="Loading..." />
+    <div className="splash-screen">
+      <div className="environment"></div>
+      <div className="hero-container">
+        <h1 className="hero glitch layers" data-text="Luis Torres, PhD">
+          Luis Torres, PhD
+        </h1>
       </div>
-      <div className="signature">
-        <p>Luis Torres, PhD</p>
-      </div>
-      {showProceedMessage && (
-        <div className="proceed-message">
-          (Click to proceed)
-        </div>
-      )}
     </div>
   );
 };

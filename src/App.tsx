@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,21 +14,27 @@ import SplashScreen from './components/SplashScreen';
 
 const App: React.FC = () => {
   const location = useLocation();
-  const [isExiting, setIsExiting] = useState(false);
   const [splashVisible, setSplashVisible] = useState(true);
 
-  const handleSplashClick = () => {
-    setIsExiting(true);
-    setTimeout(() => {
-      setSplashVisible(false);
-    }, 1000); // Duration of the exit animation
+  const handleUserInteraction = () => {
+    setSplashVisible(false); // Directly set splash screen to not visible on interaction
   };
+
+  // Add event listeners when the component mounts
+  useEffect(() => {
+    window.addEventListener('click', handleUserInteraction);
+    window.addEventListener('wheel', handleUserInteraction, { passive: true });
+
+    // Clean up the event listeners when the component unmounts
+    return () => {
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('wheel', handleUserInteraction);
+    };
+  }, []); // Empty dependency array means this effect runs only once after the initial render
 
   return (
     <>
-      {splashVisible && (
-        <SplashScreen isExiting={isExiting} onClick={handleSplashClick} />
-      )}
+      {splashVisible && <SplashScreen />}
       {!splashVisible && (
         <>
           {location.pathname !== '/' && <Header />}
