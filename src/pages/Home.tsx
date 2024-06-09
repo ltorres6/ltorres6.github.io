@@ -7,10 +7,7 @@ const Home: React.FC = () => {
     <main className="home-page">
       <section className="hero-section">
         <h1>Welcome to luigibytes.com</h1>
-        <p>
-          Hi, I'm Luis Torres, a scientific solutions engineer passionate about
-          medical physics and cutting-edge research.
-        </p>
+        <p>{"Hi, I'm Luis Torres, a scientific solutions engineer."}</p>
       </section>
       <section className="highlights">
         <Link to="/education" className="highlight-link">
