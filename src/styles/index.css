@@ -20,9 +20,7 @@ body {
   color: var(--text-color);
   margin: 0;
   font-family: 'Anonymous Pro', monospace;
-  transition:
-    background 0.3s,
-    color 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 header,
@@ -188,9 +186,7 @@ a:hover {
   margin: 0.5rem 0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
   text-decoration: none;
 }
 
