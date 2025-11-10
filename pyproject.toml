@@ -1,18 +1,11 @@
-[tool.poetry]
+[project]
 name = "ltorres6-github-io"
 version = "0.1.0"
-description = ""
-authors = ["Luis Torres <luigibytes@gmail.com>"]
+description = "Add your description here"
 readme = "README.md"
-packages = [{include = "ltorres6"}]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-scholarly = "^1.7.11"
-aiohttp = "^3.9.5"
-pre-commit = "^3.7.1"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.13.2",
+    "pre-commit>=4.4.0",
+    "scholarly>=1.7.11",
+]

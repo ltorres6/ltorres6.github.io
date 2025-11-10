@@ -6,8 +6,15 @@ const Home: React.FC = () => {
   return (
     <main className="home-page">
       <section className="hero-section">
-        <h1>Welcome to luigibytes.com</h1>
-        <p>{"Hi, I'm Luis Torres, a scientific solutions engineer."}</p>
+        <div className="hero-photo">
+          <img src="/assets/profile-photo.jpg" alt="Luis Torres, PhD" />
+        </div>
+        <h1>Luis Torres, PhD</h1>
+        <p className="subtitle">Medical Physicist | Scientific Solutions Engineer</p>
+        <div className="cta-buttons">
+          <Link to="/resume">View Resume</Link>
+          <Link to="/about" className="secondary">About Me</Link>
+        </div>
       </section>
       <section className="highlights">
         <Link to="/education" className="highlight-link">
@@ -33,29 +40,20 @@ const Home: React.FC = () => {
             <h2>About Me</h2>
             <p>
               Get to know more about my background, interests, and professional
-              journey as a scientific solutions engineer.
+              journey as a scientific solutions engineer. Contact information included.
             </p>
           </article>
         </Link>
-        <Link to="/contact" className="highlight-link">
+        <Link to="/activity" className="highlight-link">
           <article className="highlight">
-            <h2>Contact</h2>
-            <p>
-              Feel free to reach out to me for collaborations, inquiries, or
-              just to connect.
-            </p>
-          </article>
-        </Link>
-        <Link to="/projects" className="highlight-link">
-          <article className="highlight">
-            <h2>Projects</h2>
-            <p>Explore my projects and repositories.</p>
+            <h2>Activity</h2>
+            <p>View my development activity, contributions, and recent projects across GitHub and GitLab.</p>
           </article>
         </Link>
         <Link to="/resume" className="highlight-link">
           <article className="highlight">
             <h2>Resume</h2>
-            <p>Check out my resume if you want.</p>
+            <p>View my complete professional curriculum vitae and career history.</p>
           </article>
         </Link>
       </section>

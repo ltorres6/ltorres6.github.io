@@ -1,0 +1,162 @@
+[
+  {
+    "title": "Structure-function imaging of lung disease using ultrashort echo time MRI",
+    "authors": "Luis Torres, Jeff Kammerman, Andrew D Hahn, Wei Zha, Scott K Nagle, Kevin Johnson, Nathan Sandbo, Keith Meyer, Mark Schiebler, Sean B Fain",
+    "journal": "No journal",
+    "year": 2019,
+    "citations": 57,
+    "url": "https://www.sciencedirect.com/science/article/pii/S107663321830566X"
+  },
+  {
+    "title": "Hyperpolarized 129Xe MR Spectroscopy in the Lung Shows                     1-year Reduced Function in Idiopathic Pulmonary Fibrosis",
+    "authors": "Andrew D Hahn, Katie J Carey, Gregory P Barton, Luis A Torres, Jeff Kammerman, Robert V Cadman, Kristine E Lee, Mark L Schiebler, Nathan Sandbo, Sean B Fain",
+    "journal": "Radiology",
+    "year": 2022,
+    "citations": 12,
+    "url": "https://pubs.rsna.org/doi/abs/10.1148/radiol.211433"
+  },
+  {
+    "title": "Dynamic contrast enhanced MRI for the evaluation of lung perfusion in idiopathic pulmonary fibrosis",
+    "authors": "Luis A Torres, Kristine E Lee, Gregory P Barton, Andrew D Hahn, Nathan Sandbo, Mark L Schiebler, Sean B Fain",
+    "journal": "European Respiratory Journal",
+    "year": 2022,
+    "citations": 9,
+    "url": "https://erj.ersjournals.com/content/60/4/2102058.abstract"
+  },
+  {
+    "title": "Simulation of hepatic arteries, synthesis of 2D fluoroscopic images for interventional imaging studies",
+    "authors": "Joseph F Whitehead, Ethan P Nikolau, Sarvesh Periyasamy, Luis A Torres, Paul F Laeseke, Michael A Speidel, Martin G Wagner",
+    "journal": "No journal",
+    "year": 2020,
+    "citations": 9,
+    "url": "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11312/113121W/Simulation-of-hepatic-arteries-and-synthesis-of-2D-fluoroscopic-Images/10.1117/12.2549570.short"
+  },
+  {
+    "title": "Dynamic imaging using motion-compensated smoothness regularization on manifolds (MoCo-SToRM)",
+    "authors": "Qing Zou, Luis A Torres, Sean B Fain, Nara S Higano, Alister J Bates, Mathews Jacob",
+    "journal": "Physics in medicine & biology",
+    "year": 2022,
+    "citations": 8,
+    "url": "https://iopscience.iop.org/article/10.1088/1361-6560/ac79fc/meta"
+  },
+  {
+    "title": "Pulmonary Microvascular Changes in Adult Survivors of Prematurity: Utility of Dynamic Contrast\u2013enhanced Magnetic Resonance Imaging",
+    "authors": "Gregory P Barton, Luis A Torres, Kara N Goss, Marlowe W Eldridge, Sean B Fain",
+    "journal": "American journal of respiratory, critical care medicine",
+    "year": 2020,
+    "citations": 6,
+    "url": "https://www.atsjournals.org/doi/full/10.1164/rccm.202002-0344LE"
+  },
+  {
+    "title": "Functional MRI of regional gas exchange in IPF disease progression",
+    "authors": "A Hahn, KJ Carey, GP Barton, LA Torres, RV Cadman, NK Sandbo, SB Fain",
+    "journal": "No journal",
+    "year": 2020,
+    "citations": 3,
+    "url": "https://www.atsjournals.org/doi/pdf/10.1164/ajrccm-conference.2020.201.1_MeetingAbstracts.A5995"
+  },
+  {
+    "title": "Motion compensated extreme MRI: Multi-scale low rank reconstructions for highly accelerated 3D dynamic acquisitions (MoCo-MSLR)",
+    "authors": "Zachary Miller, Luis Torres, Sean Fain, Kevin Johnson",
+    "journal": "arXiv preprint arXiv:2205.00131",
+    "year": 2022,
+    "citations": 2,
+    "url": "https://arxiv.org/abs/2205.00131"
+  },
+  {
+    "title": "Quantitative Magnetic Resonance Imaging, Computed Tomography Measures of Progression in Idiopathic Pulmonary Fibrosis",
+    "authors": "KJ Carey, A Hahn, LA Torres, J Kammerman, GP Barton, RV Cadman, NK Sandbo, SB Fain",
+    "journal": "No journal",
+    "year": 2020,
+    "citations": 2,
+    "url": "https://www.atsjournals.org/doi/pdf/10.1164/ajrccm-conference.2020.201.1_MeetingAbstracts.A4510"
+  },
+  {
+    "title": "Functional xenon-129 magnetic resonance imaging response to antifibrotic treatment in idiopathic pulmonary fibrosis",
+    "authors": "Andrew D Hahn, Katie J Carey, Gregory P Barton, Luis A Torres, Jeff Kammerman, Robert V Cadman, Kristine E Lee, Mark L Schiebler, Nathan Sandbo, Sean B Fain",
+    "journal": "ERJ open research",
+    "year": 2023,
+    "citations": 1,
+    "url": "https://openres.ersjournals.com/content/9/3/00080-2023.abstract"
+  },
+  {
+    "title": "Motion Compensation in Pulmonary Ultra-short Echo Time MRI: Preliminary results in Idiopathic Pulmonary Fibrosis",
+    "authors": "Luis A Torres, Xucheng Zhu, Nathan Sandbo, Mark L Shiebler, Peder Larson, Sean B Fain",
+    "journal": "No journal",
+    "year": 2020,
+    "citations": 1,
+    "url": "https://archive.ismrm.org/2020/0457.html"
+  },
+  {
+    "title": "Comparison of weighting algorithms to mitigate respiratory motion in free-breathing neonatal pulmonary radial UTE-MRI",
+    "authors": "Deep B Gandhi, Nara S Higano, Andrew D Hahn, Chamindu C Gunatilaka, Luis A Torres, Sean B Fain, Jason C Woods, Alister J Bates",
+    "journal": "Biomedical Physics & Engineering Express",
+    "year": 2024,
+    "citations": 0,
+    "url": "https://automatedtest.iopscience.iop.org/article/10.1088/2057-1976/ad3cdd/meta"
+  },
+  {
+    "title": "Regional Correlation of Pulmonary Gas Exchange, Perfusion in IPF Using MRI",
+    "authors": "SB Fain, KJ Carey, GP Barton, LA Torres, J Kammerman, RV Cadman, KE Lee, ML Schiebler, NK Sandbo, AD Hahn",
+    "journal": "No journal",
+    "year": 2023,
+    "citations": 0,
+    "url": "https://www.atsjournals.org/doi/pdf/10.1164/ajrccm-conference.2023.207.1_MeetingAbstracts.A2298"
+  },
+  {
+    "title": "Improved Spatiotemporal Association of Structure, Function in Pulmonary MRI",
+    "authors": "Luis A Torres",
+    "journal": "No journal",
+    "year": 2022,
+    "citations": 0,
+    "url": "https://search.proquest.com/openview/729e439cf2e63634cabd4b05b17d77ac/1?pq-origsite=gscholar&cbl=18750&diss=y"
+  },
+  {
+    "title": "Anatomically Realistic Simulation of Random Human Airway Trees",
+    "authors": "J Whitehead, L Torres, A Hahn, S Fain, M Speidel, M Wagner",
+    "journal": "No journal",
+    "year": 2021,
+    "citations": 0,
+    "url": "https://scholar.google.com/scholar?cluster=13099072055313379711&hl=en&oi=scholarr"
+  },
+  {
+    "title": "High-resolution dynamic 3D UTE Lung MRI using motion-compensated manifold learning",
+    "authors": "Qing Zou, Luis A Torres, Sean B Fain, Mathews Jacob",
+    "journal": "No journal",
+    "year": "N/A",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2022/0661.html"
+  },
+  {
+    "title": "Comparison of Quantitative, Semi-Quantitative Metrics from Dynamic Contrast Enhanced MRI: Evaluation in Idiopathic Pulmonary Fibrosis",
+    "authors": "Luis A Torres, Greg Barton, Nathan Sandbo, Mark L Shiebler, Sean B Fain",
+    "journal": "No journal",
+    "year": "N/A",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2020/2351.html"
+  },
+  {
+    "title": "Quantification of Pulmonary Perfusion in Idiopathic Pulmonary Fibrosis: Preliminary Results",
+    "authors": "Luis A Torres, Wei Zha, Mu He, Bastiaan Driehuys, Sean B Fain",
+    "journal": "No journal",
+    "year": "N/A",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2018/4347.html"
+  },
+  {
+    "title": "Comparison of Respiratory-Gating Weighting Algorithms in Neonatal Pulmonary UTE-MRI",
+    "authors": "Deep B Gandhi, Nara S Higano, Andrew D Hahn, Luis Torres, Sean B Fain, Jason C Woods, Alister J Bates",
+    "journal": "No journal",
+    "year": "N/A",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2021/2273.html"
+  },
+  {
+    "title": "Motion Compensation in Pulmonary Ultra-short Echo Time MRI: Preliminary Results in Neonatal Bronchopulmonary Dysplasia",
+    "authors": "Luis A Torres, Nara S Higano, Deep Gandhi, Chamindu Gunatilaka, Jason C Woods, Sean B Fain",
+    "journal": "No journal",
+    "year": "N/A",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2022/1479.html"
+  }
+]

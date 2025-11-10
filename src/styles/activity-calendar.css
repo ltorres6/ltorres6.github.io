@@ -1,36 +1,232 @@
-/* Custom styles for Activity Calendar */
+/* Professional Activity Calendar Styles - Perfectly Centered */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.center-content h1 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-4xl);
+}
+
+.center-content .page-intro {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto var(--spacing-4xl);
+  line-height: var(--leading-relaxed);
+}
+
+.center-content section {
+  width: 100%;
+  max-width: var(--container-lg);
+  margin: var(--spacing-2xl) auto;
+  padding: var(--spacing-3xl);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Top accent bar for sections */
+.center-content section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+}
+
+.center-content section h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+}
+
+/* Calendar wrapper */
+.calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Calendar header with subtitle and legend */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Subtitle under title */
+.calendar-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Custom legend */
+.custom-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.legend-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.legend-colors {
+  display: flex;
+  gap: 3px;
+  margin: 0 var(--spacing-xs);
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Hide the default footer completely */
+.center-content section :global(.react-activity-calendar__footer) {
+  display: none !important;
+}
+
+/* Loading state */
+.calendar-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+  gap: var(--spacing-md);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--accent-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Activity Calendar Customization - Professional Gold Theme */
 .activity-calendar {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
-  gap: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(14px, 1fr));
+  gap: 4px;
+  padding: var(--spacing-lg) 0;
 }
 
 .activity-calendar__week {
   display: grid;
-  grid-template-rows: repeat(7, minmax(10px, 1fr));
-  gap: 2px;
+  grid-template-rows: repeat(7, minmax(14px, 1fr));
+  gap: 4px;
 }
 
+/* Zero contributions - Matches text-light color */
 .activity-calendar__day {
-  width: 10px;
-  height: 10px;
-  background-color: #ebedf0;
-  border-radius: 2px;
-  transition: background-color 0.3s;
+  width: 14px;
+  height: 14px;
+  background-color: #768390;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: 1px solid #5a6570;
 }
 
+.activity-calendar__day:hover {
+  transform: scale(1.3);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+}
+
+/* Professional gold gradient levels - Light to Dark Gold (Less to More activity) */
 .activity-calendar__day--level-1 {
-  background-color: rgba(0, 255, 0, 0.2);
+  background-color: #ddc488;
+  border-color: #c9a961;
 }
 
 .activity-calendar__day--level-2 {
-  background-color: rgba(0, 255, 0, 0.4);
+  background-color: #c9a961;
+  border-color: #b8964d;
 }
 
 .activity-calendar__day--level-3 {
-  background-color: rgba(0, 255, 0, 0.6);
+  background-color: #a68543;
+  border-color: #8f7139;
 }
 
 .activity-calendar__day--level-4 {
-  background-color: rgba(0, 255, 0, 0.8);
+  background-color: #8f7139;
+  border-color: #7a5f2f;
+  box-shadow: 0 0 12px rgba(143, 113, 57, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .center-content section {
+    padding: var(--spacing-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .center-content {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .center-content section {
+    padding: var(--spacing-xl);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .center-content section h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .activity-calendar {
+    gap: 3px;
+  }
+
+  .activity-calendar__week {
+    gap: 3px;
+  }
+
+  .activity-calendar__day {
+    width: 12px;
+    height: 12px;
+  }
 }

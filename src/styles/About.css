@@ -1,0 +1,57 @@
+/* About Page - Professional Layout */
+.contact-info {
+  margin-top: var(--spacing-4xl);
+  padding: var(--spacing-3xl);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top accent bar */
+.contact-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+}
+
+.contact-info h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+
+.contact-info p {
+  font-size: var(--font-size-lg);
+  color: var(--text-color);
+  line-height: var(--leading-relaxed);
+}
+
+.contact-info a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  border-bottom: 2px solid transparent;
+}
+
+.contact-info a:hover {
+  color: var(--accent-gold-light);
+  border-bottom-color: var(--accent-gold-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-info {
+    padding: var(--spacing-2xl);
+    margin-top: var(--spacing-3xl);
+  }
+}
+

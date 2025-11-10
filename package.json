@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://luigibytes.com",
+  "homepage": "https://luistorresphd.com",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

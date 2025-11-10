@@ -27,9 +27,14 @@ const Publications: React.FC = () => {
 
   return (
     <main>
-      <h1>Publications</h1>
-      <section>
-        <h2>Google Scholar Profile</h2>
+      <div className="publications-header">
+        <h1>Publications</h1>
+        <p>
+          Research contributions in medical physics and imaging, with a focus on
+          advanced MRI techniques for lung imaging and diagnostics.
+        </p>
+      </div>
+      <div className="publications-list">
         {scholarData.map((publication, index) => (
           <div key={index} className="publication-card">
             <h3>
@@ -48,14 +53,12 @@ const Publications: React.FC = () => {
               <strong>Journal:</strong> {publication.journal}
             </p>
             <p>
-              <strong>Year:</strong> {publication.year}
-            </p>
-            <p>
-              <strong>Citations:</strong> {publication.citations}
+              <strong>Year:</strong> {publication.year} | <strong>Citations:</strong>{' '}
+              {publication.citations}
             </p>
           </div>
         ))}
-      </section>
+      </div>
     </main>
   );
 };

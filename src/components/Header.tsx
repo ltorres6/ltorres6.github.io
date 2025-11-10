@@ -9,6 +9,7 @@ const Header: React.FC = () => {
     const pageTitle = path
       ? path.charAt(0).toUpperCase() + path.slice(1)
       : 'Home';
+
     document.title = `Luis Torres, PhD${
       pageTitle !== 'Home' ? ` - ${pageTitle}` : ''
     }`;
@@ -22,7 +23,7 @@ const Header: React.FC = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/projects">Projects</Link>
+            <Link to="/activity">Activity</Link>
           </li>
           <li>
             <Link to="/education">Education</Link>
@@ -35,9 +36,6 @@ const Header: React.FC = () => {
           </li>
           <li>
             <Link to="/resume">Resume</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </nav>

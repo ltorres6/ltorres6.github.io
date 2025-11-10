@@ -48,7 +48,8 @@ async def fetch_publication_details(publication, session):
 
 
 async def fetch_scholar_data(user_id):
-    setup_proxy()
+    # Try without proxy first (may work or get rate-limited)
+    # setup_proxy()
 
     # Fetch the author using the user_id
     author = scholarly.search_author_id(user_id)
