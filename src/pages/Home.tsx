@@ -35,6 +35,15 @@ const Home: React.FC = () => {
             </p>
           </article>
         </Link>
+        <Link to="/recipes" className="highlight-link">
+          <article className="highlight">
+            <h2>Recipes</h2>
+            <p>
+              Explore my collection of favorite recipes, from New Mexican comfort food
+              to quick weeknight meals that I love to make and share.
+            </p>
+          </article>
+        </Link>
         <Link to="/about" className="highlight-link">
           <article className="highlight">
             <h2>About Me</h2>

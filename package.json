@@ -12,9 +12,11 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@types/marked": "^5.0.2",
     "date-fns": "^3.6.0",
     "github-calendar": "^2.3.4",
     "html-react-parser": "^5.1.10",
+    "marked": "^17.0.1",
     "react": "^18.2.0",
     "react-activity-calendar": "^2.2.8",
     "react-dom": "^18.2.0",
@@ -42,8 +44,8 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.6",
     "prettier": "^3.2.5",
+    "rimraf": "^3.0.2",
     "typescript": "^5.1.6",
-    "vite": "^5.2.0",
-    "rimraf": "^3.0.2"
+    "vite": "^5.2.0"
   }
 }

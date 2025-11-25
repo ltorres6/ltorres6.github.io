@@ -32,6 +32,9 @@ const Header: React.FC = () => {
             <Link to="/publications">Publications</Link>
           </li>
           <li>
+            <Link to="/recipes">Recipes</Link>
+          </li>
+          <li>
             <Link to="/about">About Me</Link>
           </li>
           <li>
