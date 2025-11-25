@@ -5,5 +5,19 @@
     "description": "A sample placeholder description for future recipes.",
     "tags": ["New Mexican", "Comfort Food", "Spicy", "One-Pot"],
     "dateAdded": "2025-11-24"
+  },
+  {
+    "filename": "chocolate-banana-overnight-oats.md",
+    "title": "Chocolate Banana Overnight Oats",
+    "description": "A delicious and nutritious make-ahead breakfast that combines the rich flavors of chocolate and banana. Perfect for busy mornings when you want something healthy and satisfying ready to go.",
+    "tags": ["Breakfast", "Healthy", "Make-Ahead", "Vegetarian", "Gluten-Free"],
+    "dateAdded": "2025-11-25"
+  },
+  {
+    "filename": "classic-vanilla-almond-overnight-oats.md",
+    "title": "Classic Vanilla Almond Overnight Oats",
+    "description": "A simple and delicious overnight oats recipe with the classic combination of vanilla and almond flavors. This protein-rich breakfast is perfect for busy mornings and can be customized with your favorite toppings.",
+    "tags": ["Breakfast", "Healthy", "Make-Ahead", "Vegetarian", "Gluten-Free", "Protein-Rich"],
+    "dateAdded": "2025-11-25"
   }
 ]
