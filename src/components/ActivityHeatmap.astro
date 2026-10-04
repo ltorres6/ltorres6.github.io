@@ -1,0 +1,201 @@
+---
+import type { ActivityDay } from '@/lib/activity';
+
+interface Props {
+  days: ActivityDay[];
+}
+
+const { days } = Astro.props;
+const CELL = 11;
+const GAP = 3;
+const LEFT = 30;
+const TOP = 18;
+const weeks = Math.ceil(days.length / 7);
+const width = LEFT + weeks * (CELL + GAP);
+const height = TOP + 7 * (CELL + GAP);
+
+const totals = days.reduce(
+  (t, d) => ({ github: t.github + d.github, gitlab: t.gitlab + d.gitlab }),
+  { github: 0, gitlab: 0 },
+);
+const total = totals.github + totals.gitlab;
+const activeDays = days.filter((d) => d.github + d.gitlab > 0).length;
+
+// Four intensity levels from quartiles of non-zero days.
+const nonZero = days
+  .map((d) => d.github + d.gitlab)
+  .filter((n) => n > 0)
+  .sort((a, b) => a - b);
+const q = (p: number) =>
+  nonZero[Math.min(nonZero.length - 1, Math.floor(p * nonZero.length))] ?? 1;
+const cuts = [q(0.25), q(0.5), q(0.75)];
+const level = (n: number) =>
+  n === 0 ? 0 : 1 + cuts.filter((c) => n > c).length;
+const opacity = [0, 0.3, 0.5, 0.75, 1];
+
+const fmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const monthFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  timeZone: 'UTC',
+});
+
+const months: { x: number; label: string }[] = [];
+for (let w = 0; w < weeks; w++) {
+  const day = days[w * 7];
+  if (!day) continue;
+  const d = new Date(day.date + 'T00:00:00Z');
+  if (d.getUTCDate() <= 7 && w < weeks - 1)
+    months.push({ x: LEFT + w * (CELL + GAP), label: monthFmt.format(d) });
+}
+
+const describe = (d: ActivityDay) => {
+  const n = d.github + d.gitlab;
+  const parts = [
+    d.gitlab && `GitLab ${d.gitlab}`,
+    d.github && `GitHub ${d.github}`,
+  ]
+    .filter(Boolean)
+    .join(', ');
+  return `${fmt.format(new Date(d.date + 'T00:00:00Z'))}: ${n} contribution${n === 1 ? '' : 's'} (${parts})`;
+};
+const nf = new Intl.NumberFormat('en-US');
+---
+
+<figure class="heatmap">
+  <figcaption class="mono">
+    <span>
+      <strong>{nf.format(total)}</strong> contributions in the last year
+    </span>
+    <span>
+      <strong>{activeDays}</strong> active days
+    </span>
+    <span>
+      GitLab <strong>{nf.format(totals.gitlab)}</strong>
+    </span>
+    <span>
+      GitHub <strong>{nf.format(totals.github)}</strong>
+    </span>
+  </figcaption>
+  <div class="scroll">
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      style={`min-width: ${width}px`}
+      role="img"
+      aria-label={`${nf.format(total)} contributions across GitHub and GitLab in the last year`}
+    >
+      {months.map((m) => (
+        <text x={m.x} y="10" class="axis">
+          {m.label}
+        </text>
+      ))}
+      {['Mon', 'Wed', 'Fri'].map((label, i) => (
+        <text
+          x="0"
+          y={TOP + (1 + i * 2) * (CELL + GAP) + CELL - 2}
+          class="axis"
+        >
+          {label}
+        </text>
+      ))}
+      {days.map((d, i) => {
+        const n = d.github + d.gitlab;
+        const x = LEFT + Math.floor(i / 7) * (CELL + GAP);
+        const y = TOP + (i % 7) * (CELL + GAP);
+        return n === 0 ? (
+          <rect x={x} y={y} width={CELL} height={CELL} rx="2" class="empty" />
+        ) : (
+          <rect
+            x={x}
+            y={y}
+            width={CELL}
+            height={CELL}
+            rx="2"
+            class="on"
+            fill-opacity={opacity[level(n)]}
+          >
+            <title>{describe(d)}</title>
+          </rect>
+        );
+      })}
+    </svg>
+  </div>
+  <div class="legend mono" aria-hidden="true">
+    Less
+    {opacity.map((o, i) => (
+      <svg width={CELL} height={CELL}>
+        <rect
+          width={CELL}
+          height={CELL}
+          rx="2"
+          class={i === 0 ? 'empty' : 'on'}
+          fill-opacity={i === 0 ? undefined : o}
+        />
+      </svg>
+    ))}
+    More
+  </div>
+</figure>
+
+<style>
+  .heatmap {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  figcaption strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .scroll {
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .scroll > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  .axis {
+    font: 400 10px var(--font-mono);
+    fill: var(--muted);
+  }
+
+  .empty {
+    fill: var(--rule);
+  }
+
+  .on {
+    fill: var(--gold-ink);
+  }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  .legend svg {
+    display: inline-block;
+  }
+</style>

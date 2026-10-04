@@ -1,6 +1,9 @@
-# Classic New Mexican Green Chile Stew
-
-A hearty and flavorful stew featuring roasted green chiles, tender pork, and potatoes. A staple of New Mexican cuisine that brings warmth and comfort to any meal.
+---
+title: 'Classic New Mexican Green Chile Stew'
+description: 'A hearty and flavorful stew featuring roasted green chiles, tender pork, and potatoes. A staple of New Mexican cuisine that brings warmth and comfort to any meal.'
+tags: ['New Mexican', 'Comfort Food', 'Spicy', 'One-Pot']
+dateAdded: 2025-11-24
+---
 
 ## Ingredients
 

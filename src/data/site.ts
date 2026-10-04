@@ -3,6 +3,7 @@ export const site = {
   credential: 'PhD',
   fullName: 'Luis Torres, PhD',
   roles: ['Medical Physicist', 'Scientific Solutions Engineer'],
+  currentTitle: 'Senior Scientific Solutions Engineer',
   description:
     'Luis Torres, PhD: medical physicist and scientific solutions engineer building software for MRI research.',
   email: 'luigibytes@gmail.com',
@@ -12,6 +13,7 @@ export const site = {
     github: 'https://github.com/ltorres6',
     gitlab: 'https://gitlab.com/luistorres2',
     scholar: 'https://scholar.google.com/citations?user=EfaQZA8AAAAJ',
+    linkedin: 'https://www.linkedin.com/in/luigibytes',
   },
 } as const;
 

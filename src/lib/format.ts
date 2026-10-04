@@ -13,7 +13,3 @@ export const formatTitle = (title: string) =>
     /\b(\d{1,3})(Xe|He|F|C|Na|P|H)\b/g,
     '<sup>$1</sup>$2',
   );
-
-/** Turn **name** markers in an author list into <strong>. */
-export const formatAuthors = (authors: string) =>
-  escapeHtml(authors).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');

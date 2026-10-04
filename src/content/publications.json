@@ -1,0 +1,409 @@
+[
+  {
+    "id": "kizhakke-2026-jmri",
+    "title": "Comparison of Retrospective Motion Compensation Techniques for Pulmonary Dynamic Ultrashort Time to Echo MRI in Suspected Idiopathic Pulmonary Fibrosis",
+    "authors": [
+      "Kizhakke Puliyakote AS",
+      "Torres LA",
+      "AlAtoum A",
+      "AlArab N",
+      "Johnson KM"
+    ],
+    "etAl": true,
+    "venue": "Journal of Magnetic Resonance Imaging",
+    "year": 2026,
+    "type": "journal",
+    "citations": 0,
+    "selected": true
+  },
+  {
+    "id": "aboderin-2026-ats",
+    "title": "Comparison of Pulmonary Perfusion in Long Covid and Idiopathic Pulmonary Fibrosis Using Dynamic Contrast Enhanced MRI",
+    "authors": [
+      "Aboderin O",
+      "Kizhakke Puliyakote AS",
+      "Torres LA",
+      "McIntosh MJ",
+      "Staab KR"
+    ],
+    "etAl": true,
+    "venue": "American Journal of Respiratory and Critical Care Medicine (ATS abstract)",
+    "year": 2026,
+    "type": "conference",
+    "citations": 0
+  },
+  {
+    "id": "shuai-2025-ismrm",
+    "title": "ISMRM Open Science Initiative for Perfusion Imaging (OSIPI): Composite Python Library for ASL Image Processing",
+    "authors": [
+      "Shuai Y",
+      "van Houdt PJ",
+      "Petr J",
+      "Torres LA",
+      "Thomas DL",
+      "Dickie BR",
+      "Kershaw LE",
+      "Zhou L",
+      "Adebimpe A",
+      "Wei Z",
+      "Mora Álvarez MG"
+    ],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2025,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2025/3692_Nv2N2aQQv.html"
+  },
+  {
+    "id": "gandhi-2024-bpex",
+    "title": "Comparison of weighting algorithms to mitigate respiratory motion in free-breathing neonatal pulmonary radial UTE-MRI",
+    "authors": [
+      "Gandhi DB",
+      "Higano NS",
+      "Hahn AD",
+      "Gunatilaka CC",
+      "Torres LA",
+      "Fain SB",
+      "Woods JC",
+      "Bates AJ"
+    ],
+    "venue": "Biomedical Physics & Engineering Express",
+    "year": 2024,
+    "type": "journal",
+    "citations": 5,
+    "doi": "10.1088/2057-1976/ad3cdd"
+  },
+  {
+    "id": "torres-2024-ismrm",
+    "title": "fw-classification, an open-source package for MRI scan classification",
+    "authors": [
+      "Torres LA",
+      "Richman N",
+      "Velasco P",
+      "Perry M",
+      "Pannetier N"
+    ],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2024,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2024/3121.html"
+  },
+  {
+    "id": "hahn-2023-erjor",
+    "title": "Functional xenon-129 magnetic resonance imaging response to antifibrotic treatment in idiopathic pulmonary fibrosis",
+    "authors": [
+      "Hahn AD",
+      "Carey KJ",
+      "Barton GP",
+      "Torres LA",
+      "Kammerman J",
+      "Cadman RV",
+      "Lee KE",
+      "Schiebler ML",
+      "Sandbo N",
+      "Fain SB"
+    ],
+    "venue": "ERJ Open Research",
+    "year": 2023,
+    "type": "journal",
+    "citations": 17,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10291299/"
+  },
+  {
+    "id": "fain-2023-ats",
+    "title": "Regional Correlation of Pulmonary Gas Exchange and Perfusion in IPF Using MRI",
+    "authors": [
+      "Fain SB",
+      "Carey KJ",
+      "Barton GP",
+      "Torres LA",
+      "Kammerman J",
+      "Cadman RV",
+      "Lee KE",
+      "Schiebler ML",
+      "Sandbo NK",
+      "Hahn AD"
+    ],
+    "venue": "American Journal of Respiratory and Critical Care Medicine (ATS abstract)",
+    "year": 2023,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://www.atsjournals.org/doi/pdf/10.1164/ajrccm-conference.2023.207.1_MeetingAbstracts.A2298"
+  },
+  {
+    "id": "miller-2023-ismrm",
+    "title": "Motion Corrected Multi-scale Low Rank Reconstructions for Highly Accelerated 3D Dynamic Acquisitions",
+    "authors": ["Miller Z", "Torres LA", "Fain S", "Johnson KM"],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2023,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2023/5105.html"
+  },
+  {
+    "id": "hahn-2022-radiology",
+    "title": "Hyperpolarized 129Xe MR Spectroscopy in the Lung Shows 1-year Reduced Function in Idiopathic Pulmonary Fibrosis",
+    "authors": [
+      "Hahn AD",
+      "Carey KJ",
+      "Barton GP",
+      "Torres LA",
+      "Kammerman J",
+      "Cadman RV",
+      "Lee KE",
+      "Schiebler ML",
+      "Sandbo N",
+      "Fain SB"
+    ],
+    "venue": "Radiology",
+    "year": 2022,
+    "type": "journal",
+    "citations": 38,
+    "doi": "10.1148/radiol.211433",
+    "selected": true
+  },
+  {
+    "id": "torres-2022-erj",
+    "title": "Dynamic contrast enhanced MRI for the evaluation of lung perfusion in idiopathic pulmonary fibrosis",
+    "authors": [
+      "Torres LA",
+      "Lee KE",
+      "Barton GP",
+      "Hahn AD",
+      "Sandbo N",
+      "Schiebler ML",
+      "Fain SB"
+    ],
+    "venue": "European Respiratory Journal",
+    "year": 2022,
+    "type": "journal",
+    "citations": 26,
+    "doi": "10.1183/13993003.02058-2021",
+    "selected": true
+  },
+  {
+    "id": "zou-2022-pmb",
+    "title": "Dynamic imaging using motion-compensated smoothness regularization on manifolds (MoCo-SToRM)",
+    "authors": [
+      "Zou Q",
+      "Torres LA",
+      "Fain SB",
+      "Higano NS",
+      "Bates AJ",
+      "Jacob M"
+    ],
+    "venue": "Physics in Medicine & Biology",
+    "year": 2022,
+    "type": "journal",
+    "citations": 28,
+    "doi": "10.1088/1361-6560/ac79fc",
+    "selected": true
+  },
+  {
+    "id": "miller-2022-arxiv",
+    "title": "Motion compensated extreme MRI: Multi-scale low rank reconstructions for highly accelerated 3D dynamic acquisitions (MoCo-MSLR)",
+    "authors": ["Miller Z", "Torres L", "Fain S", "Johnson K"],
+    "venue": "arXiv",
+    "year": 2022,
+    "type": "preprint",
+    "citations": 4,
+    "url": "https://arxiv.org/abs/2205.00131"
+  },
+  {
+    "id": "torres-2022-dissertation",
+    "title": "Improved Spatiotemporal Association of Structure and Function in Pulmonary MRI",
+    "authors": ["Torres LA"],
+    "venue": "PhD dissertation, University of Wisconsin–Madison",
+    "year": 2022,
+    "type": "thesis",
+    "citations": 1,
+    "url": "https://search.proquest.com/openview/729e439cf2e63634cabd4b05b17d77ac/1?pq-origsite=gscholar&cbl=18750&diss=y"
+  },
+  {
+    "id": "zou-2022-ismrm",
+    "title": "High-resolution dynamic 3D UTE Lung MRI using motion-compensated manifold learning",
+    "authors": ["Zou Q", "Torres LA", "Fain SB", "Jacob M"],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2022,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2022/0661.html"
+  },
+  {
+    "id": "torres-2022-ismrm",
+    "title": "Motion Compensation in Pulmonary Ultra-short Echo Time MRI: Preliminary Results in Neonatal Bronchopulmonary Dysplasia",
+    "authors": [
+      "Torres LA",
+      "Higano NS",
+      "Gandhi D",
+      "Gunatilaka C",
+      "Woods JC",
+      "Fain SB"
+    ],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2022,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2022/1479.html"
+  },
+  {
+    "id": "whitehead-2021-mp",
+    "title": "Anatomically Realistic Simulation of Random Human Airway Trees",
+    "authors": [
+      "Whitehead J",
+      "Torres L",
+      "Hahn A",
+      "Fain S",
+      "Speidel M",
+      "Wagner M"
+    ],
+    "venue": "Medical Physics (AAPM abstract)",
+    "year": 2021,
+    "type": "conference",
+    "citations": 0
+  },
+  {
+    "id": "gandhi-2021-ismrm",
+    "title": "Comparison of Respiratory-Gating Weighting Algorithms in Neonatal Pulmonary UTE-MRI",
+    "authors": [
+      "Gandhi DB",
+      "Higano NS",
+      "Hahn AD",
+      "Torres L",
+      "Fain SB",
+      "Woods JC",
+      "Bates AJ"
+    ],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2021,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2021/2273.html"
+  },
+  {
+    "id": "barton-2020-ajrccm",
+    "title": "Pulmonary Microvascular Changes in Adult Survivors of Prematurity: Utility of Dynamic Contrast–enhanced Magnetic Resonance Imaging",
+    "authors": ["Barton GP", "Torres LA", "Goss KN", "Eldridge MW", "Fain SB"],
+    "coFirst": true,
+    "venue": "American Journal of Respiratory and Critical Care Medicine",
+    "year": 2020,
+    "type": "journal",
+    "citations": 8,
+    "doi": "10.1164/rccm.202002-0344LE"
+  },
+  {
+    "id": "whitehead-2020-spie",
+    "title": "Simulation of hepatic arteries and synthesis of 2D fluoroscopic images for interventional imaging studies",
+    "authors": [
+      "Whitehead JF",
+      "Nikolau EP",
+      "Periyasamy S",
+      "Torres LA",
+      "Laeseke PF",
+      "Speidel MA",
+      "Wagner MG"
+    ],
+    "venue": "Proc. SPIE Medical Imaging 2020",
+    "year": 2020,
+    "type": "conference",
+    "citations": 14,
+    "doi": "10.1117/12.2549570"
+  },
+  {
+    "id": "hahn-2020-ats",
+    "title": "Functional MRI of regional gas exchange in IPF disease progression",
+    "authors": [
+      "Hahn A",
+      "Carey KJ",
+      "Barton GP",
+      "Torres LA",
+      "Cadman RV",
+      "Sandbo NK",
+      "Fain SB"
+    ],
+    "venue": "American Journal of Respiratory and Critical Care Medicine (ATS abstract)",
+    "year": 2020,
+    "type": "conference",
+    "citations": 3,
+    "url": "https://www.atsjournals.org/doi/pdf/10.1164/ajrccm-conference.2020.201.1_MeetingAbstracts.A5995"
+  },
+  {
+    "id": "carey-2020-ats",
+    "title": "Quantitative Magnetic Resonance Imaging and Computed Tomography Measures of Progression in Idiopathic Pulmonary Fibrosis",
+    "authors": [
+      "Carey KJ",
+      "Hahn A",
+      "Torres LA",
+      "Kammerman J",
+      "Barton GP",
+      "Cadman RV",
+      "Sandbo NK",
+      "Fain SB"
+    ],
+    "venue": "American Journal of Respiratory and Critical Care Medicine (ATS abstract)",
+    "year": 2020,
+    "type": "conference",
+    "citations": 2,
+    "url": "https://www.atsjournals.org/doi/pdf/10.1164/ajrccm-conference.2020.201.1_MeetingAbstracts.A4510"
+  },
+  {
+    "id": "torres-2020-ismrm-ipf",
+    "title": "Motion compensation in pulmonary ultra-short echo time MRI: preliminary results in idiopathic pulmonary fibrosis",
+    "authors": [
+      "Torres LA",
+      "Zhu X",
+      "Sandbo N",
+      "Shiebler ML",
+      "Larson P",
+      "Fain SB"
+    ],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2020,
+    "type": "conference",
+    "citations": 1,
+    "url": "https://archive.ismrm.org/2020/0457.html"
+  },
+  {
+    "id": "torres-2020-ismrm-dce",
+    "title": "Comparison of Quantitative and Semi-Quantitative Metrics from Dynamic Contrast Enhanced MRI: Evaluation in Idiopathic Pulmonary Fibrosis",
+    "authors": ["Torres LA", "Barton G", "Sandbo N", "Shiebler ML", "Fain SB"],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2020,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2020/2351.html"
+  },
+  {
+    "id": "torres-2019-acadrad",
+    "title": "Structure-function imaging of lung disease using ultrashort echo time MRI",
+    "authors": [
+      "Torres L",
+      "Kammerman J",
+      "Hahn AD",
+      "Zha W",
+      "Nagle SK",
+      "Johnson K",
+      "Sandbo N",
+      "Meyer K",
+      "Schiebler M",
+      "Fain SB"
+    ],
+    "venue": "Academic Radiology",
+    "year": 2019,
+    "type": "journal",
+    "citations": 91,
+    "doi": "10.1016/j.acra.2018.12.007",
+    "selected": true
+  },
+  {
+    "id": "torres-2018-ismrm",
+    "title": "Quantification of Pulmonary Perfusion in Idiopathic Pulmonary Fibrosis: Preliminary Results",
+    "authors": ["Torres LA", "Zha W", "He M", "Driehuys B", "Fain SB"],
+    "venue": "ISMRM Annual Meeting",
+    "year": 2018,
+    "type": "conference",
+    "citations": 0,
+    "url": "https://archive.ismrm.org/2018/4347.html"
+  }
+]
