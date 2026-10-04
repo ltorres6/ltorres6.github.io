@@ -1,9 +1,36 @@
-@import '@fontsource-variable/inter/wght.css';
-@import '@fontsource-variable/source-serif-4/opsz.css';
-@import '@fontsource-variable/source-serif-4/opsz-italic.css';
-@import '@fontsource/jetbrains-mono/400.css';
-@import '@fontsource/jetbrains-mono/500.css';
+@import './fonts.css';
 @import './tokens.css';
+
+/*
+ * Fallbacks scaled to JetBrains Mono's 0.6em advance width, so monospace text
+ * (tags, labels, chips) doesn't re-wrap and shift layout when the web font loads.
+ */
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Consolas');
+  size-adjust: 109.1%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Fallback Menlo';
+  src: local('Menlo');
+  size-adjust: 99.7%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Fallback Courier';
+  src: local('Courier New');
+  size-adjust: 100%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
 
 @view-transition {
   navigation: auto;

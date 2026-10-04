@@ -75,11 +75,6 @@ export const education: Degree[] = [
     date: 'June 2022',
   },
   {
-    degree: 'MS, Medical Physics',
-    school: 'University of Wisconsin–Madison',
-    place: 'Madison, WI',
-  },
-  {
     degree: 'BS, Physics',
     detail: 'Mathematics minor',
     school: 'New Mexico Institute of Mining and Technology',

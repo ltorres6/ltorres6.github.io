@@ -47,7 +47,14 @@ const types = (['journal', 'conference', 'preprint', 'thesis'] as const)
     </p>
   </header>
 
-  <div class="filters" role="group" aria-label="Filter by type" hidden>
+  <noscript>
+    <style>
+      .filters {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+  <div class="filters" role="group" aria-label="Filter by type">
     <button type="button" data-filter="all" aria-pressed="true">
       All <span>{pubs.length}</span>
     </button>
@@ -78,7 +85,6 @@ const types = (['journal', 'conference', 'preprint', 'thesis'] as const)
 <script>
   const bar = document.querySelector<HTMLElement>('.filters');
   if (bar) {
-    bar.hidden = false;
     const buttons = [...bar.querySelectorAll<HTMLButtonElement>('button')];
     bar.addEventListener('click', (e) => {
       const btn = (e.target as Element).closest('button');
@@ -114,10 +120,6 @@ const types = (['journal', 'conference', 'preprint', 'thesis'] as const)
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: -2rem;
-  }
-
-  .filters[hidden] {
-    display: none;
   }
 
   .filters button {

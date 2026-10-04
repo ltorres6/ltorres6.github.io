@@ -27,3 +27,4 @@ dist-ssr
 .specify
 # Astro
 .astro
+.lighthouseci

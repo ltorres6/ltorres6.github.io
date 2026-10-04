@@ -6,6 +6,8 @@ export default defineConfig({
   site: 'https://luistorresphd.com',
   integrations: [sitemap()],
   prefetch: { defaultStrategy: 'hover' },
+  // The CSS is small; inlining it removes a render-blocking request.
+  build: { inlineStylesheets: 'always' },
   // Old routes from the React site.
   redirects: {
     '/activity': '/work/',

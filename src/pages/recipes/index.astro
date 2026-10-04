@@ -20,7 +20,14 @@ const tags = [...new Set(recipes.flatMap((r) => r.data.tags))].sort();
     </p>
   </header>
 
-  <div class="tools" hidden>
+  <noscript>
+    <style>
+      .tools {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+  <div class="tools">
     <label class="visually-hidden" for="recipe-search">
       Search recipes
     </label>
@@ -93,7 +100,6 @@ const tags = [...new Set(recipes.flatMap((r) => r.data.tags))].sort();
   }
 
   if (tools && input) {
-    tools.hidden = false;
     input.addEventListener('input', update);
     tools.addEventListener('click', (e) => {
       const btn = (e.target as Element).closest<HTMLButtonElement>(
@@ -114,10 +120,6 @@ const tags = [...new Set(recipes.flatMap((r) => r.data.tags))].sort();
     display: grid;
     gap: 1rem;
     margin-top: -2rem;
-  }
-
-  .tools[hidden] {
-    display: none;
   }
 
   input {

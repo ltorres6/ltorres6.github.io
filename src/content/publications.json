@@ -7,14 +7,19 @@
       "Torres LA",
       "AlAtoum A",
       "AlArab N",
-      "Johnson KM"
+      "Johnson KM",
+      "Bello RM",
+      "O'Sullivan-Murphy B",
+      "Mammarappallil JG",
+      "Hahn AD",
+      "Fain SB"
     ],
-    "etAl": true,
     "venue": "Journal of Magnetic Resonance Imaging",
     "year": 2026,
     "type": "journal",
     "citations": 0,
-    "selected": true
+    "selected": true,
+    "doi": "10.1002/jmri.70350"
   },
   {
     "id": "aboderin-2026-ats",

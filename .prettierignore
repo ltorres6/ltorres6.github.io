@@ -5,3 +5,5 @@ package-lock.json
 uv.lock
 public/assets
 .venv
+src/styles/fonts.css
+.lighthouseci

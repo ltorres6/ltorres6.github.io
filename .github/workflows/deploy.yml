@@ -1,10 +1,13 @@
-name: Deploy to GitHub Pages
+name: Build and deploy
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    # Weekly rebuild (Mondays 09:00 UTC) refreshes the contribution heatmap.
+    - cron: '0 9 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -38,7 +41,19 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload artifact
+      - name: Lighthouse budgets
+        if: github.event_name == 'pull_request'
+        run: npx --yes @lhci/cli@0.15 autorun
+
+      - name: Upload Lighthouse reports
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci
+          if-no-files-found: ignore
+
+      - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
