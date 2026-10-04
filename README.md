@@ -9,6 +9,7 @@ Visit the live site at [luistorresphd.com](https://luistorresphd.com)
 ## 🎨 Design Philosophy
 
 This portfolio features a clean, professional design with:
+
 - **Modern Academic Aesthetic**: Navy blue and gold color palette
 - **Professional Typography**: Inter font family for clarity and readability
 - **Responsive Design**: Optimized for all devices
@@ -25,6 +26,7 @@ This portfolio features a clean, professional design with:
 ## 📋 Features
 
 ### Core Pages
+
 - **Home**: Professional hero section with call-to-action buttons
 - **About**: Professional biography and background
 - **Education**: Academic credentials and achievements
@@ -34,6 +36,7 @@ This portfolio features a clean, professional design with:
 - **Contact**: Professional contact form
 
 ### Key Integrations
+
 - **Google Scholar**: Automated publication fetching via Python script
 - **Google Docs**: Dynamic resume embedding
 - **GitHub/GitLab**: Contribution calendar visualization
@@ -41,6 +44,7 @@ This portfolio features a clean, professional design with:
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - Python 3.10+ (for publication fetching)
@@ -95,6 +99,7 @@ poetry run python src/utils/fetch_publications.py
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary Navy**: `#1a365d`
 - **Secondary Navy**: `#2c5282`
 - **Accent Gold**: `#d4a574`
@@ -102,6 +107,7 @@ poetry run python src/utils/fetch_publications.py
 - **Off White**: `#f7fafc`
 
 ### Typography
+
 - **Font Family**: Inter
 - **Headings**: 600 weight
 - **Body**: 400 weight

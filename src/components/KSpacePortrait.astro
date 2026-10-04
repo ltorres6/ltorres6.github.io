@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import photo from '@/assets/profile-photo.jpg';
+import { site } from '@/data/site';
+---
+
+<div class="kspace">
+  <canvas data-kspace aria-hidden="true"></canvas>
+  <Image
+    src={photo}
+    alt={site.name}
+    width={480}
+    height={480}
+    widths={[200, 320, 480]}
+    sizes="(max-width: 760px) 8rem, 12.5rem"
+    loading="eager"
+    fetchpriority="high"
+  />
+</div>
+
+<script>
+  // Radial k-space acquired in bit-reversed view order: spoke k is played at angle
+  // π·rev(k)/N, where rev reverses the bits of k. Each new spoke lands in the largest
+  // remaining gap, so coverage fills in pseudo-randomly but stays near-uniform at
+  // every point in the acquisition.
+  const BITS = 6;
+  const SPOKES = 1 << BITS; // 64 full-diameter spokes over 0–π
+  const STEP_MS = 140;
+  const HOLD_STEPS = 12; // pause on the complete set before the next pass
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+  const bitReverse = (k: number) => {
+    let r = 0;
+    for (let b = 0; b < BITS; b++) r = (r << 1) | ((k >> b) & 1);
+    return r;
+  };
+  const angles = Array.from(
+    { length: SPOKES },
+    (_, k) => (Math.PI * bitReverse(k)) / SPOKES,
+  );
+
+  for (const canvas of document.querySelectorAll<HTMLCanvasElement>(
+    '[data-kspace]',
+  )) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) continue;
+    let step = SPOKES + 1; // spokes acquired this pass; start on the complete set
+    let last = 0;
+    let visible = true;
+
+    const draw = () => {
+      const gold =
+        getComputedStyle(canvas).getPropertyValue('--band-gold').trim() ||
+        '#d9b25f';
+      const dpr = devicePixelRatio || 1;
+      const size = canvas.clientWidth;
+      if (!size) return;
+      canvas.width = size * dpr;
+      canvas.height = size * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, size, size);
+      const c = size / 2;
+      const r = size / 2 - 2;
+      const still = reduce.matches;
+      const acquired = still ? SPOKES : Math.min(step, SPOKES);
+      const current = still || step > SPOKES ? -1 : step - 1;
+
+      ctx.strokeStyle = gold;
+      ctx.fillStyle = gold;
+      ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.18;
+      ctx.beginPath();
+      ctx.arc(c, c, r, 0, Math.PI * 2);
+      ctx.stroke();
+
+      for (let k = 0; k < SPOKES; k++) {
+        const a = angles[k];
+        const on = k === current;
+        ctx.globalAlpha = on ? 0.95 : k < acquired ? 0.34 : 0.08;
+        ctx.lineWidth = on ? 1.5 : 1;
+        ctx.beginPath();
+        ctx.moveTo(c - Math.cos(a) * r, c - Math.sin(a) * r);
+        ctx.lineTo(c + Math.cos(a) * r, c + Math.sin(a) * r);
+        ctx.stroke();
+        if (on) {
+          for (let s = -6; s <= 6; s++) {
+            const t = (s / 6) * r;
+            ctx.beginPath();
+            ctx.arc(
+              c + Math.cos(a) * t,
+              c + Math.sin(a) * t,
+              1.6,
+              0,
+              Math.PI * 2,
+            );
+            ctx.fill();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+    };
+
+    const tick = (ts: number) => {
+      if (visible && !reduce.matches && ts - last > STEP_MS) {
+        step = (step + 1) % (SPOKES + HOLD_STEPS);
+        last = ts;
+        draw();
+      }
+      requestAnimationFrame(tick);
+    };
+
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+    }).observe(canvas);
+    new ResizeObserver(draw).observe(canvas);
+    addEventListener('themechange', draw);
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+    reduce.addEventListener('change', draw);
+    draw();
+    requestAnimationFrame(tick);
+  }
+</script>
+
+<style>
+  .kspace {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 22rem);
+    aspect-ratio: 1;
+  }
+
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .kspace :global(img) {
+    position: absolute;
+    inset: 22%;
+    width: 56%;
+    height: 56%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow:
+      0 0 0 2px var(--band),
+      0 0 0 3px var(--band-gold);
+  }
+
+  @media (max-width: 760px) {
+    .kspace {
+      order: -1;
+      justify-self: start;
+      width: min(100%, 14rem);
+    }
+  }
+</style>

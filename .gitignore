@@ -22,7 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-*.js
 
 .augment
 .specify
+# Astro
+.astro

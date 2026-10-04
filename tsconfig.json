@@ -1,20 +1,9 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "outDir": "./dist", // Output directory for compiled files
-    "rootDir": "./src" // Root directory of your source files
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+    "paths": { "@/*": ["src/*"] }
+  }
 }

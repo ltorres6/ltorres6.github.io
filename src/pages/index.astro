@@ -1,0 +1,539 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import KSpacePortrait from '@/components/KSpacePortrait.astro';
+import SectionHead from '@/components/SectionHead.astro';
+import { site } from '@/data/site';
+import {
+  featuredProjects,
+  scholarStats,
+  selectedPublications,
+} from '@/data/home';
+import { formatAuthors, formatTitle } from '@/lib/format';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  honorificSuffix: site.credential,
+  url: Astro.site?.href,
+  jobTitle: site.roles,
+  worksFor: {
+    '@type': 'Organization',
+    name: site.employer.name,
+    url: site.employer.url,
+  },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'University of Wisconsin–Madison' },
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'New Mexico Institute of Mining and Technology',
+    },
+  ],
+  sameAs: Object.values(site.links),
+};
+---
+
+<BaseLayout jsonLd={jsonLd}>
+  <section class="hero" slot="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="label">{site.roles.join(' · ')}</p>
+        <h1 id="hero-h">
+          I turn MRI research into <em>software people can use.</em>
+        </h1>
+        <p class="lede">
+          I earned a PhD in Medical Physics at UW–Madison, working on
+          motion-corrected lung MRI. Now I'm a Scientific Solutions Engineer at{' '}
+          <a href={site.employer.url}>{site.employer.name}</a> in{' '}
+          {site.location}, building tools that make imaging research faster and
+          easier to reproduce.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/resume/">
+            View résumé
+          </a>
+          <a class="btn btn-secondary" href="/publications/">
+            Publications
+          </a>
+        </div>
+        <p class="email">{site.email}</p>
+      </div>
+      <KSpacePortrait />
+    </div>
+  </section>
+
+  <section aria-labelledby="sides-h">
+    <SectionHead
+      id="sides-h"
+      title="Two sides of the same work"
+      link={{ href: '/about/', label: 'More about me' }}
+    />
+    <div class="two-sides">
+      <div class="side">
+        <p class="label">Research</p>
+        <h3>Imaging lung structure and function with MRI.</h3>
+        <p>
+          My PhD work combined ultrashort echo time MRI, dynamic contrast
+          perfusion and hyperpolarized xenon to follow diseases like idiopathic
+          pulmonary fibrosis over time.
+        </p>
+        <ul>
+          <li>Motion compensation for free-breathing UTE lung MRI</li>
+          <li>DCE-MRI perfusion in IPF and prematurity</li>
+          <li>
+            Hyperpolarized <sup>129</sup>Xe gas-exchange imaging
+          </li>
+        </ul>
+        <p class="figures mono">
+          <span>
+            <strong>{scholarStats.publications}</strong> publications
+          </span>
+          <span>
+            <strong>{scholarStats.citations}</strong> citations
+          </span>
+          <span>
+            h-index <strong>{scholarStats.hIndex}</strong>
+          </span>
+        </p>
+      </div>
+      <div class="side">
+        <p class="label">Engineering</p>
+        <h3>Building the tools that run imaging research.</h3>
+        <p>
+          At Flywheel I build tools that streamline imaging research, from
+          organizing data to running analyses. I also contribute to open-source
+          MRI tools.
+        </p>
+        <ul>
+          <li>Automated MRI scan classification</li>
+          <li>Open-source ASL processing with OSIPI</li>
+          <li>Reproducible reconstruction pipelines in Python</li>
+        </ul>
+        <p class="figures mono">
+          <span>
+            <strong>Python</strong>
+          </span>
+          <span>
+            <strong>MRI</strong> data platforms
+          </span>
+          <span>
+            <strong>Open source</strong>
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="work-h">
+    <SectionHead
+      id="work-h"
+      title="Selected work"
+      link={{ href: '/work/', label: 'All projects' }}
+    />
+    <div class="projects">
+      {featuredProjects.map((p) => (
+        <article class="project">
+          <p class="label kind">{p.kind}</p>
+          <h3>
+            <a href={p.url}>{p.name}</a>
+          </h3>
+          <p>{p.summary}</p>
+          <ul class="tags">
+            {p.tags.map((t) => (
+              <li class="tag">{t}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="pubs-h">
+    <SectionHead
+      id="pubs-h"
+      title="Selected publications"
+      link={{
+        href: '/publications/',
+        label: `All ${scholarStats.publications} publications`,
+      }}
+    />
+    <ol class="pubs">
+      {selectedPublications.map((pub) => (
+        <li class="pub">
+          <span class="year">{pub.year}</span>
+          <div class="pub-body">
+            <p class="pub-title">
+              {pub.url ? (
+                <a href={pub.url} set:html={formatTitle(pub.title)} />
+              ) : (
+                <Fragment set:html={formatTitle(pub.title)} />
+              )}
+            </p>
+            <p class="authors">
+              <Fragment set:html={formatAuthors(pub.authors)} />{' '}
+              <span class="venue">{pub.venue}</span>
+            </p>
+            <p class="meta">
+              {pub.firstAuthor && <span>First author</span>}
+              {pub.citations !== undefined && (
+                <span>{pub.citations} citations</span>
+              )}
+              {pub.doi && (
+                <a href={`https://doi.org/${pub.doi}`}>doi:{pub.doi}</a>
+              )}
+              {pub.year >= new Date().getFullYear() && <span>New</span>}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="edu-h">
+    <SectionHead
+      id="edu-h"
+      title="Education"
+      link={{ href: '/resume/', label: 'Full résumé' }}
+    />
+    <ol class="edu">
+      <li>
+        <h3>PhD, Medical Physics</h3>
+        <span class="when">2022</span>
+        <p>
+          University of Wisconsin–Madison ·{' '}
+          <span class="thesis">
+            Improved Spatiotemporal Association of Structure and Function in
+            Pulmonary MRI
+          </span>
+        </p>
+      </li>
+      <li>
+        <h3>MS, Medical Physics</h3>
+        <p>University of Wisconsin–Madison</p>
+      </li>
+      <li>
+        <h3>BS, Physics</h3>
+        <p>New Mexico Institute of Mining and Technology</p>
+      </li>
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: var(--band);
+    color: var(--band-ink);
+  }
+
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 2.5rem 4rem;
+    align-items: center;
+    padding-block: clamp(3rem, 8vw, 5.5rem);
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 40rem;
+  }
+
+  .hero .label {
+    color: var(--band-gold);
+  }
+
+  .hero h1 {
+    font-size: var(--step-4);
+    font-weight: 400;
+    color: var(--band-ink);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--band-gold);
+  }
+
+  .lede {
+    color: var(--band-muted);
+    font-size: 1.125rem;
+    max-width: 36rem;
+  }
+
+  .lede a {
+    color: var(--band-ink);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero .btn-secondary {
+    color: var(--band-ink);
+    border-color: var(--band-rule);
+  }
+
+  .hero .btn-secondary:hover {
+    border-color: var(--band-muted);
+  }
+
+  .email {
+    font: 400 0.875rem/1.4 var(--font-mono);
+    color: var(--band-muted);
+  }
+
+  /* two sides */
+  .two-sides {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .side {
+    display: grid;
+    gap: 0.9rem;
+    align-content: start;
+  }
+
+  .side:first-child {
+    padding-right: clamp(1.5rem, 4vw, 3.5rem);
+    border-right: 1px solid var(--rule);
+  }
+
+  .side:last-child {
+    padding-left: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .side .label {
+    color: var(--gold-ink);
+  }
+
+  .side h3 {
+    font-size: var(--step-2);
+    font-weight: 400;
+  }
+
+  .side p {
+    color: var(--muted);
+  }
+
+  .side ul {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .side li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .side li::before {
+    content: '';
+    flex: none;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--gold);
+    transform: translateY(-0.15rem) rotate(45deg);
+  }
+
+  .figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .figures strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* projects */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-rows: auto auto 1fr auto;
+    transition: border-color 150ms;
+  }
+
+  .project:hover {
+    border-color: var(--gold);
+  }
+
+  .kind {
+    color: var(--gold-ink);
+  }
+
+  .project h3 {
+    font: 600 1.125rem/1.3 var(--font-mono);
+    letter-spacing: -0.01em;
+  }
+
+  .project h3 a {
+    text-decoration: none;
+  }
+
+  .project h3 a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+  }
+
+  .project p:not(.kind) {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  /* publications */
+  .pubs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pub {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 0.25rem 1.5rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pub:first-child {
+    padding-top: 0;
+  }
+
+  .year {
+    font: 500 0.875rem/1.9 var(--font-mono);
+    color: var(--gold-ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pub-body {
+    display: grid;
+    gap: 0.35rem;
+    max-width: var(--measure);
+  }
+
+  .pub-title {
+    font: 600 1.0625rem/1.45 var(--font-body);
+  }
+
+  .pub-title a {
+    text-decoration-color: transparent;
+  }
+
+  .pub-title a:hover {
+    text-decoration-color: var(--gold);
+  }
+
+  .authors {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .authors :global(strong) {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .venue {
+    font-style: italic;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    color: var(--muted);
+    font: 400 0.8125rem/1.5 var(--font-mono);
+  }
+
+  .meta a {
+    color: var(--gold-ink);
+  }
+
+  /* education */
+  .edu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .edu li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .edu li:first-child {
+    padding-top: 0;
+  }
+
+  .edu h3 {
+    font-size: var(--step-1);
+  }
+
+  .edu p {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    grid-column: 1;
+  }
+
+  .when {
+    font: 500 0.875rem/1.6 var(--font-mono);
+    color: var(--gold-ink);
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .thesis {
+    font-style: italic;
+  }
+
+  @media (max-width: 760px) {
+    .hero .wrap,
+    .two-sides {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .two-sides {
+      gap: 2rem;
+    }
+
+    .side:first-child {
+      padding-right: 0;
+      border-right: 0;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .side:last-child {
+      padding-left: 0;
+    }
+
+    .pub {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .year {
+      line-height: 1.4;
+    }
+  }
+</style>
