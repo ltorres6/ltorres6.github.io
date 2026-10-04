@@ -1,0 +1,62 @@
+[
+  {
+    "id": "osipy",
+    "name": "osipy",
+    "kind": "Open-source library · OSIPI",
+    "url": "https://github.com/OSIPI/osipy",
+    "summary": "An OSIPI-standard Python library for perfusion MRI analysis across DCE, DSC, ASL and IVIM, with multi-vendor DICOM support and optional GPU acceleration. I am its most active contributor.",
+    "tags": ["Python", "Perfusion MRI", "GPU"],
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "imoco",
+    "name": "imoco",
+    "kind": "Reconstruction · JMRI 2026",
+    "url": "https://github.com/ltorres6/imoco",
+    "summary": "Python implementation of the retrospective motion compensation methods compared in our 2026 JMRI paper, from soft gating and XD-GRASP to iMoCo, for free-breathing UTE lung MRI.",
+    "tags": ["Python", "UTE MRI", "uv"],
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "fw-classification",
+    "name": "fw-classification",
+    "kind": "Open-source package · ISMRM 2024",
+    "url": "https://archive.ismrm.org/2024/3121.html",
+    "summary": "An open-source package for classifying MRI scans, so large imaging datasets can be sorted and curated automatically.",
+    "tags": ["Python", "MRI", "Flywheel"],
+    "featured": true,
+    "order": 3
+  },
+  {
+    "id": "osipi-asl",
+    "name": "OSIPI ASL library",
+    "kind": "Community library · ISMRM 2025",
+    "url": "https://archive.ismrm.org/2025/3692_Nv2N2aQQv.html",
+    "summary": "A composite Python library for arterial spin labelling image processing, built with the ISMRM Open Science Initiative for Perfusion Imaging.",
+    "tags": ["Python", "Perfusion", "Open science"],
+    "featured": false,
+    "order": 4
+  },
+  {
+    "id": "sigpy-demons",
+    "name": "sigpy_demons",
+    "kind": "Registration · GitHub",
+    "url": "https://github.com/ltorres6/sigpy_demons",
+    "summary": "The demons image registration algorithm implemented with the SigPy toolbox, so it can run on the GPU.",
+    "tags": ["Python", "SigPy", "GPU"],
+    "featured": false,
+    "order": 5
+  },
+  {
+    "id": "pcvipr-docker",
+    "name": "pcviprDocker",
+    "kind": "Container · GitHub",
+    "url": "https://github.com/ltorres6/pcviprDocker",
+    "summary": "A Docker image that installs Orchestra and PC VIPR, so the reconstruction toolchain can be set up reproducibly.",
+    "tags": ["Docker", "Reconstruction"],
+    "featured": false,
+    "order": 6
+  }
+]

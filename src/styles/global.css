@@ -1,0 +1,307 @@
+@import './fonts.css';
+@import './tokens.css';
+
+/*
+ * Fallbacks scaled to JetBrains Mono's 0.6em advance width, so monospace text
+ * (tags, labels, chips) doesn't re-wrap and shift layout when the web font loads.
+ */
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Consolas');
+  size-adjust: 109.1%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Fallback Menlo';
+  src: local('Menlo');
+  size-adjust: 99.7%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Fallback Courier';
+  src: local('Courier New');
+  size-adjust: 100%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--step-0) / 1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body > main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-thickness 120ms;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+/* ---------- utilities ---------- */
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.label {
+  font: 500 var(--step--1) / 1.4 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+
+.prose {
+  max-width: var(--measure);
+  display: grid;
+  gap: 1.1em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -3rem;
+  z-index: 100;
+  background: var(--gold);
+  color: var(--on-gold);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* ---------- page scaffolding ---------- */
+
+.page {
+  display: grid;
+  gap: clamp(3.5rem, 8vw, 5.5rem);
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.page-title {
+  display: grid;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-title h1 {
+  font-size: var(--step-4);
+  font-weight: 400;
+}
+
+.page-title p {
+  color: var(--muted);
+  max-width: var(--measure);
+}
+
+/* ---------- buttons, tags ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 600 0.9375rem/1 var(--font-body);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 120ms,
+    border-color 120ms,
+    color 120ms;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--gold) 85%, #fff);
+}
+
+.btn-secondary {
+  color: inherit;
+  border-color: currentColor;
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  font: 400 var(--step--2) / 1 var(--font-mono);
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  @view-transition {
+    navigation: none;
+  }
+}
+
+main:focus {
+  outline: none;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in 0.55in;
+  }
+
+  :root:not([data-print]) {
+    --paper: #fff;
+    --surface: #fff;
+    --ink: #14213d;
+    --muted: #3d4658;
+    --rule: #d9d3c5;
+    --gold: #b8892e;
+    --gold-ink: #7a5912;
+    color-scheme: light;
+  }
+
+  html {
+    font-size: 11.5px;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link,
+  .screen-only {
+    display: none !important;
+  }
+
+  .wrap {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .page {
+    padding-block: 0;
+    gap: 14pt;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

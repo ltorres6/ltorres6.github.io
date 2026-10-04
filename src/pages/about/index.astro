@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+---
+
+<BaseLayout
+  title="About"
+  description="Luis Torres is a medical physicist and Scientific Solutions Engineer at Flywheel, originally from New Mexico and now based in North Carolina."
+>
+  <header class="page-title">
+    <h1>About me</h1>
+    <p>{site.roles.join(' · ')}</p>
+  </header>
+
+  <div class="prose">
+    <p>
+      Hi! I'm Luis Torres, originally from New Mexico and now based in North
+      Carolina. I work as a {site.currentTitle} at{' '}
+      <a href={site.employer.url}>{site.employer.name}</a>. I hold a PhD in
+      Medical Physics from the University of Wisconsin–Madison, where I
+      specialized in advanced MRI techniques for lung imaging.
+    </p>
+    <p>
+      At Flywheel, I develop tools that streamline research processes and make
+      scientific discoveries more efficient. In my free time, I stay connected
+      to my New Mexican roots through cultural activities and trips back home.
+    </p>
+    <p>
+      Feel free to reach out to discuss medical imaging, scientific computing,
+      or collaboration opportunities.
+    </p>
+  </div>
+
+  <section class="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact</h2>
+    <dl>
+      <dt class="label">Email</dt>
+      <dd>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </dd>
+      <dt class="label">Code</dt>
+      <dd>
+        <a href={site.links.github}>GitHub</a> ·{' '}
+        <a href={site.links.gitlab}>GitLab</a>
+      </dd>
+      <dt class="label">Research</dt>
+      <dd>
+        <a href={site.links.scholar}>Google Scholar</a>
+      </dd>
+    </dl>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    display: grid;
+    gap: 1.25rem;
+    max-width: var(--measure);
+  }
+
+  h2 {
+    font-size: var(--step-2);
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 0.75rem 1.5rem;
+    margin: 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  dt {
+    color: var(--gold-ink);
+    line-height: 1.9;
+  }
+
+  dd {
+    margin: 0;
+  }
+</style>

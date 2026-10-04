@@ -1,0 +1,225 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const recipes = (await getCollection('recipes')).sort(
+  (a, b) => b.data.dateAdded.getTime() - a.data.dateAdded.getTime(),
+);
+const tags = [...new Set(recipes.flatMap((r) => r.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Recipes"
+  description="New Mexican comfort food and make-ahead breakfasts that Luis Torres cooks at home."
+>
+  <header class="page-title">
+    <h1>Recipes</h1>
+    <p>
+      New Mexican comfort food and the make-ahead breakfasts that get me through
+      the week.
+    </p>
+  </header>
+
+  <noscript>
+    <style>
+      .tools {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+  <div class="tools">
+    <label class="visually-hidden" for="recipe-search">
+      Search recipes
+    </label>
+    <input
+      id="recipe-search"
+      type="search"
+      placeholder="Search recipes or ingredients"
+      autocomplete="off"
+    />
+    <div class="chips" role="group" aria-label="Filter by tag">
+      {tags.map((t) => (
+        <button type="button" data-tag={t} aria-pressed="false">
+          {t}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <ul class="recipes">
+    {recipes.map((r) => (
+      <li
+        class="recipe"
+        data-tags={r.data.tags.join('|')}
+        data-text={`${r.data.title} ${r.data.description} ${r.body ?? ''}`.toLowerCase()}
+      >
+        <p class="label date">
+          Added{' '}
+          {r.data.dateAdded.toLocaleDateString('en-US', {
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+          })}
+        </p>
+        <h2>
+          <a href={`/recipes/${r.id}/`}>{r.data.title}</a>
+        </h2>
+        <p class="desc">{r.data.description}</p>
+        <ul class="tags">
+          {r.data.tags.map((t) => (
+            <li class="tag">{t}</li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ul>
+  <p class="empty" hidden>
+    No recipes match. Try a different word or tag.
+  </p>
+</BaseLayout>
+
+<script>
+  const tools = document.querySelector<HTMLElement>('.tools');
+  const input = document.querySelector<HTMLInputElement>('#recipe-search');
+  const items = [...document.querySelectorAll<HTMLElement>('.recipe')];
+  const empty = document.querySelector<HTMLElement>('.empty');
+  const active = new Set<string>();
+
+  function update() {
+    const q = (input?.value ?? '').trim().toLowerCase();
+    let shown = 0;
+    for (const li of items) {
+      const tags = (li.dataset.tags ?? '').split('|');
+      const ok =
+        (!q || (li.dataset.text ?? '').includes(q)) &&
+        [...active].every((t) => tags.includes(t));
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    if (empty) empty.hidden = shown > 0;
+  }
+
+  if (tools && input) {
+    input.addEventListener('input', update);
+    tools.addEventListener('click', (e) => {
+      const btn = (e.target as Element).closest<HTMLButtonElement>(
+        '[data-tag]',
+      );
+      if (!btn) return;
+      const tag = btn.dataset.tag!;
+      if (active.has(tag)) active.delete(tag);
+      else active.add(tag);
+      btn.setAttribute('aria-pressed', String(active.has(tag)));
+      update();
+    });
+  }
+</script>
+
+<style>
+  .tools {
+    display: grid;
+    gap: 1rem;
+    margin-top: -2rem;
+  }
+
+  input {
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    max-width: 32rem;
+    width: 100%;
+  }
+
+  input:focus {
+    border-color: var(--gold);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chips button {
+    font: 400 0.8125rem/1 var(--font-mono);
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+  }
+
+  .chips button:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  .chips button[aria-pressed='true'] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .recipes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .recipe {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-rows: auto auto 1fr auto;
+    transition: border-color 150ms;
+  }
+
+  .recipe[hidden] {
+    display: none;
+  }
+
+  .recipe:hover {
+    border-color: var(--gold);
+  }
+
+  .date {
+    color: var(--gold-ink);
+  }
+
+  h2 {
+    font-size: var(--step-2);
+  }
+
+  h2 a {
+    text-decoration: none;
+  }
+
+  h2 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .recipe {
+    position: relative;
+  }
+
+  .desc {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .empty {
+    color: var(--muted);
+  }
+</style>

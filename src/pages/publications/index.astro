@@ -1,0 +1,194 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PublicationItem from '@/components/PublicationItem.astro';
+import { site } from '@/data/site';
+import {
+  getPublications,
+  publicationStats,
+  typeLabels,
+} from '@/lib/publications';
+
+const pubs = await getPublications();
+const stats = publicationStats(pubs);
+const years = [...new Set(pubs.map((p) => p.data.year))];
+const types = (['journal', 'conference', 'preprint', 'thesis'] as const)
+  .map((t) => ({
+    type: t,
+    label: typeLabels[t],
+    count: pubs.filter((p) => p.data.type === t).length,
+  }))
+  .filter((t) => t.count > 0);
+---
+
+<BaseLayout
+  title="Publications"
+  description={`${stats.publications} publications on pulmonary MRI, motion-compensated reconstruction and imaging software, with ${stats.citations} citations.`}
+>
+  <header class="page-title">
+    <h1>Publications</h1>
+    <p>
+      Journal articles, conference abstracts and my dissertation, mostly on
+      structural and functional lung MRI. Citation counts are from{' '}
+      <a href={site.links.scholar}>Google Scholar</a>.
+    </p>
+    <p class="stats mono">
+      <span>
+        <strong>{stats.publications}</strong> publications
+      </span>
+      <span>
+        <strong>{stats.journal}</strong> journal articles
+      </span>
+      <span>
+        <strong>{stats.citations}</strong> citations
+      </span>
+      <span>
+        h-index <strong>{stats.hIndex}</strong>
+      </span>
+    </p>
+  </header>
+
+  <noscript>
+    <style>
+      .filters {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+  <div class="filters" role="group" aria-label="Filter by type">
+    <button type="button" data-filter="all" aria-pressed="true">
+      All <span>{pubs.length}</span>
+    </button>
+    {types.map((t) => (
+      <button type="button" data-filter={t.type} aria-pressed="false">
+        {t.label} <span>{t.count}</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="years">
+    {years.map((year) => (
+      <section class="year-group" aria-labelledby={`y-${year}`}>
+        <h2 id={`y-${year}`}>{year}</h2>
+        <ol class="pubs">
+          {pubs
+            .filter((p) => p.data.year === year)
+            .map((pub) => (
+              <PublicationItem pub={pub} showYear={false} />
+            ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+  <p class="footnote">* Contributed equally.</p>
+</BaseLayout>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('.filters');
+  if (bar) {
+    const buttons = [...bar.querySelectorAll<HTMLButtonElement>('button')];
+    bar.addEventListener('click', (e) => {
+      const btn = (e.target as Element).closest('button');
+      if (!btn) return;
+      const f = btn.dataset.filter;
+      for (const b of buttons)
+        b.setAttribute('aria-pressed', String(b === btn));
+      for (const li of document.querySelectorAll<HTMLElement>('.pub')) {
+        li.hidden = f !== 'all' && li.dataset.type !== f;
+      }
+      for (const g of document.querySelectorAll<HTMLElement>('.year-group')) {
+        g.hidden = !g.querySelector('.pub:not([hidden])');
+      }
+    });
+  }
+</script>
+
+<style>
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stats strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: -2rem;
+  }
+
+  .filters button {
+    font: 500 0.875rem/1 var(--font-body);
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    cursor: pointer;
+  }
+
+  .filters button span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+  }
+
+  .filters button:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  .filters button[aria-pressed='true'] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .years {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .year-group {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 0.5rem 1.5rem;
+  }
+
+  .year-group[hidden] {
+    display: none;
+  }
+
+  .year-group h2 {
+    font: 500 1.125rem/1.6 var(--font-mono);
+    color: var(--gold-ink);
+    letter-spacing: 0;
+  }
+
+  .pubs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pubs :global(.pub[hidden]) {
+    display: none;
+  }
+
+  .footnote {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-top: -2rem;
+  }
+
+  @media (max-width: 760px) {
+    .year-group {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

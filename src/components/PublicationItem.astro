@@ -1,0 +1,159 @@
+---
+import {
+  isFirstAuthor,
+  isLuis,
+  publicationUrl,
+  type Publication,
+} from '@/lib/publications';
+import { formatTitle } from '@/lib/format';
+
+interface Props {
+  pub: Publication;
+  /** Show the year in the left column (off when the list is grouped by year). */
+  showYear?: boolean;
+  /** Citation-style entry for the résumé: year after the venue, DOI only. */
+  compact?: boolean;
+}
+
+const { pub, showYear: showYearProp = true, compact = false } = Astro.props;
+const showYear = showYearProp && !compact;
+const d = pub.data;
+const href = publicationUrl(pub);
+const isNew = d.year >= new Date().getFullYear();
+---
+
+<li class:list={['pub', { 'no-year': !showYear, compact }]} data-type={d.type}>
+  {showYear && <span class="year">{d.year}</span>}
+  <div class="pub-body">
+    <p class="pub-title">
+      {href ? (
+        <a href={href} set:html={formatTitle(d.title)} />
+      ) : (
+        <Fragment set:html={formatTitle(d.title)} />
+      )}
+    </p>
+    <p class="authors">
+      {d.authors.map((a, i) => (
+        <>
+          {i > 0 && ', '}
+          {isLuis(a) ? <strong>{a}</strong> : a}
+          {d.coFirst && i < 2 && '*'}
+        </>
+      ))}
+      {d.etAl && ', et al'}. <span class="venue">{d.venue}</span>
+      {compact && `, ${d.year}.`}
+    </p>
+    <p class="meta">
+      {!compact && isFirstAuthor(pub) && (
+        <span>{d.coFirst ? 'Co-first author' : 'First author'}</span>
+      )}
+      {!compact && d.citations > 0 && <span>{d.citations} citations</span>}
+      {d.doi && <a href={`https://doi.org/${d.doi}`}>doi:{d.doi}</a>}
+      {!compact && isNew && <span class="new">New</span>}
+    </p>
+  </div>
+</li>
+
+<style>
+  .pub {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 0.25rem 1.5rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pub.no-year {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pub:first-child {
+    padding-top: 0;
+  }
+
+  .pub.compact {
+    padding-block: 0 0.9rem;
+    border-bottom: 0;
+  }
+
+  .compact .pub-body {
+    gap: 0.15rem;
+  }
+
+  .compact .pub-title {
+    font-size: 0.9375rem;
+  }
+
+  .compact .authors {
+    font-size: 0.875rem;
+  }
+
+  .year {
+    font: 500 0.875rem/1.9 var(--font-mono);
+    color: var(--gold-ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pub-body {
+    display: grid;
+    gap: 0.35rem;
+    max-width: var(--measure);
+  }
+
+  .pub-title {
+    font: 600 1.0625rem/1.45 var(--font-body);
+  }
+
+  .pub-title a {
+    text-decoration-color: transparent;
+  }
+
+  .pub-title a:hover {
+    text-decoration-color: var(--gold);
+  }
+
+  .authors {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .authors strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .venue {
+    font-style: italic;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    color: var(--muted);
+    font: 400 0.8125rem/1.5 var(--font-mono);
+  }
+
+  .meta:empty {
+    display: none;
+  }
+
+  .meta a {
+    color: var(--gold-ink);
+    overflow-wrap: anywhere;
+  }
+
+  .new {
+    color: var(--gold-ink);
+  }
+
+  @media (max-width: 760px) {
+    .pub {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .year {
+      line-height: 1.4;
+    }
+  }
+</style>

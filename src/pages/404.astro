@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { nav } from '@/data/site';
+---
+
+<BaseLayout title="Page not found" noindex>
+  <header class="page-title">
+    <p class="label code">404 · No signal</p>
+    <h1>This page isn't here.</h1>
+    <p>
+      The link may be out of date, or the page moved when the site was rebuilt.
+      One of these should get you where you're going.
+    </p>
+  </header>
+  <ul class="links">
+    {nav.map((item) => (
+      <li>
+        <a href={item.href}>{item.label}</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .code {
+    color: var(--gold-ink);
+  }
+
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    font-size: var(--step-1);
+  }
+</style>

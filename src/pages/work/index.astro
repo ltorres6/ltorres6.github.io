@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHead from '@/components/SectionHead.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import ActivityHeatmap from '@/components/ActivityHeatmap.astro';
+import { getActivity } from '@/lib/activity';
+import { experience } from '@/data/resume';
+import { site } from '@/data/site';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const activity = await getActivity();
+const flywheel = experience[0];
+const focus = [
+  {
+    title: 'Imaging workflows at scale',
+    text: 'Containerized, validated pipelines for curation, quality control and quantitative analysis across MRI, CT, PET and ophthalmic data, run across multi-institution studies.',
+  },
+  {
+    title: 'Classification grounded in physics',
+    text: 'Rule-based and learned classifiers for MR, CT and PET, including fine-tuning the MedSigLIP foundation model to recognize MRI contrast weighting from pixel data.',
+  },
+  {
+    title: 'LLM tooling for engineers',
+    text: 'A retrieval-augmented chatbot over internal documentation and automated release notes generated in CI/CD.',
+  },
+];
+---
+
+<BaseLayout
+  title="Work"
+  description="Open-source MRI tools, imaging workflow engineering at Flywheel, and a year of contribution activity across GitHub and GitLab."
+>
+  <header class="page-title">
+    <h1>Work</h1>
+    <p>
+      I'm a {site.currentTitle} at{' '}
+      <a href={site.employer.url}>{site.employer.name}</a>, where I turn imaging
+      research into software that runs reliably across sites. Most of that code
+      is private; the projects below are the parts I can share.
+    </p>
+  </header>
+
+  <section aria-labelledby="focus-h">
+    <SectionHead
+      id="focus-h"
+      title={`At ${flywheel.org}`}
+      link={{ href: '/resume/', label: 'Full résumé' }}
+    />
+    <div class="focus">
+      {focus.map((f) => (
+        <div class="focus-item">
+          <h3>{f.title}</h3>
+          <p>{f.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="projects-h">
+    <SectionHead id="projects-h" title="Projects" />
+    <div class="projects">
+      {projects.map((p) => (
+        <ProjectCard project={p} />
+      ))}
+    </div>
+  </section>
+
+  {activity && (
+    <section aria-labelledby="activity-h">
+      <SectionHead
+        id="activity-h"
+        title="Activity"
+        link={{ href: site.links.gitlab, label: 'GitLab profile' }}
+      />
+      <ActivityHeatmap days={activity} />
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .focus {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem 2.5rem;
+  }
+
+  .focus-item {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+    padding-top: 1rem;
+    border-top: 2px solid var(--gold);
+  }
+
+  .focus-item h3 {
+    font-size: var(--step-1);
+  }
+
+  .focus-item p {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1.25rem;
+  }
+</style>

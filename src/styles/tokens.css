@@ -1,0 +1,85 @@
+/*
+ * Design tokens. Navy carries the page; gold is reserved for links, rules,
+ * small labels and the primary button. Every text pair clears WCAG AA.
+ *
+ * Theme states: no data-theme = follow the OS; data-theme="light|dark" = explicit choice.
+ */
+:root {
+  --paper: #faf8f3; /* page ground */
+  --surface: #ffffff; /* cards */
+  --ink: #14213d; /* navy text, 15.1:1 on paper */
+  --muted: #4a5468; /* secondary text, 7.2:1 */
+  --rule: #e2ddd1;
+  --gold: #d9b25f; /* fills, rules, ornament */
+  --gold-ink: #8a6516; /* gold as text on paper, 5.0:1 */
+  --on-gold: #14213d; /* text on gold fills, 8.0:1 */
+  --band: #14213d; /* navy header/hero/footer band */
+  --band-ink: #ece7dc;
+  --band-muted: #b4bdcc;
+  --band-gold: #d9b25f;
+  --band-rule: #2a3a5c;
+  --focus: #2f6fdb;
+
+  --font-display:
+    'Source Serif 4 Variable', 'Iowan Old Style', Georgia, 'Times New Roman',
+    serif;
+  --font-body:
+    'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:
+    'JetBrains Mono', 'JetBrains Mono Fallback',
+    'JetBrains Mono Fallback Menlo', 'JetBrains Mono Fallback Courier',
+    monospace;
+
+  --step--2: 0.75rem;
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.125rem;
+  --step-4: clamp(2.25rem, 5vw, 3.25rem);
+
+  --measure: 68ch;
+  --wrap: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius: 6px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #0e1a2e;
+    --surface: #15233b;
+    --ink: #ece7dc;
+    --muted: #a9b3c4;
+    --rule: #24344f;
+    --gold: #d9b25f;
+    --gold-ink: #d9b25f;
+    --on-gold: #0e1a2e;
+    --band: #09131f;
+    --band-ink: #ece7dc;
+    --band-muted: #b4bdcc;
+    --band-gold: #d9b25f;
+    --band-rule: #1c2b45;
+    --focus: #8db4ff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #0e1a2e;
+  --surface: #15233b;
+  --ink: #ece7dc;
+  --muted: #a9b3c4;
+  --rule: #24344f;
+  --gold: #d9b25f;
+  --gold-ink: #d9b25f;
+  --on-gold: #0e1a2e;
+  --band: #09131f;
+  --band-ink: #ece7dc;
+  --band-muted: #b4bdcc;
+  --band-gold: #d9b25f;
+  --band-rule: #1c2b45;
+  --focus: #8db4ff;
+  color-scheme: dark;
+}

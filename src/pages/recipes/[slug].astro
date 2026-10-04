@@ -1,0 +1,114 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((recipe) => ({
+    params: { slug: recipe.id },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+const { Content } = await render(recipe);
+
+// Pull list items under a "## Heading" for structured data.
+const section = (name: string) => {
+  const lines = (recipe.body ?? '').split('\n');
+  const start = lines.findIndex((l) => l.trim() === `## ${name}`);
+  const items: string[] = [];
+  if (start < 0) return items;
+  for (const line of lines.slice(start + 1)) {
+    if (line.startsWith('## ')) break;
+    const m = /^\s*(?:[-*]|\d+\.)\s+(.*)$/.exec(line);
+    if (m) items.push(m[1].trim());
+  }
+  return items;
+};
+const ingredients = section('Ingredients');
+const steps = section('Instructions');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Recipe',
+  name: recipe.data.title,
+  description: recipe.data.description,
+  author: { '@type': 'Person', name: site.name },
+  datePublished: recipe.data.dateAdded.toISOString().slice(0, 10),
+  keywords: recipe.data.tags.join(', '),
+  recipeIngredient: ingredients,
+  recipeInstructions: steps.map((text) => ({ '@type': 'HowToStep', text })),
+};
+---
+
+<BaseLayout
+  title={recipe.data.title}
+  description={recipe.data.description}
+  jsonLd={jsonLd}
+>
+  <header class="page-title">
+    <p class="label crumbs">
+      <a href="/recipes/">Recipes</a>
+    </p>
+    <h1>{recipe.data.title}</h1>
+    <p>{recipe.data.description}</p>
+    <ul class="tags">
+      {recipe.data.tags.map((t) => (
+        <li class="tag">{t}</li>
+      ))}
+    </ul>
+  </header>
+
+  <article class="recipe-body">
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .crumbs a {
+    color: var(--gold-ink);
+    text-decoration: none;
+  }
+
+  .crumbs a::before {
+    content: '← ';
+  }
+
+  .tags {
+    margin-top: 0.25rem;
+  }
+
+  .recipe-body {
+    max-width: var(--measure);
+    display: grid;
+    gap: 1rem;
+    margin-top: -1.5rem;
+  }
+
+  .recipe-body :global(h2) {
+    font-size: var(--step-2);
+    margin-top: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .recipe-body :global(ul),
+  .recipe-body :global(ol) {
+    margin: 0;
+    padding-left: 1.35rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .recipe-body :global(li::marker) {
+    color: var(--gold-ink);
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  .recipe-body :global(p) {
+    margin: 0;
+  }
+</style>

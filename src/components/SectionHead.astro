@@ -1,0 +1,36 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  link?: { href: string; label: string };
+}
+
+const { id, title, link } = Astro.props;
+---
+
+<div class="sec-head">
+  <h2 id={id}>{title}</h2>
+  {link && <a href={link.href}>{link.label}</a>}
+</div>
+
+<style>
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 1.75rem;
+  }
+
+  h2 {
+    font-size: var(--step-3);
+  }
+
+  a {
+    font-size: 0.9375rem;
+    color: var(--gold-ink);
+  }
+</style>

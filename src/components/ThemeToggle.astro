@@ -1,0 +1,104 @@
+<button class="theme-toggle" type="button" data-theme-toggle>
+  <svg class="i-system" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="8"></circle>
+    <path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"></path>
+  </svg>
+  <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+  </svg>
+  <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"></path>
+  </svg>
+  <span class="visually-hidden" data-theme-label>
+    Theme: system
+  </span>
+</button>
+
+<script>
+  type Mode = 'system' | 'light' | 'dark';
+  const modes: Mode[] = ['system', 'light', 'dark'];
+  const root = document.documentElement;
+
+  function read(): Mode {
+    try {
+      const t = localStorage.getItem('theme');
+      return t === 'light' || t === 'dark' ? t : 'system';
+    } catch {
+      return 'system';
+    }
+  }
+
+  function apply(mode: Mode) {
+    if (mode === 'system') delete root.dataset.theme;
+    else root.dataset.theme = mode;
+    for (const btn of document.querySelectorAll<HTMLButtonElement>(
+      '[data-theme-toggle]',
+    )) {
+      btn.dataset.mode = mode;
+      const next = modes[(modes.indexOf(mode) + 1) % modes.length];
+      btn.title = `Theme: ${mode} (switch to ${next})`;
+      const label = btn.querySelector('[data-theme-label]');
+      if (label) label.textContent = `Theme: ${mode}. Switch to ${next}.`;
+    }
+    window.dispatchEvent(new CustomEvent('themechange'));
+  }
+
+  apply(read());
+
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as Element).closest('[data-theme-toggle]');
+    if (!btn) return;
+    const next = modes[(modes.indexOf(read()) + 1) % modes.length];
+    try {
+      if (next === 'system') localStorage.removeItem('theme');
+      else localStorage.setItem('theme', next);
+    } catch {}
+    apply(next);
+  });
+</script>
+
+<style>
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    color: var(--band-muted);
+    background: transparent;
+    border: 1px solid var(--band-rule);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 760px) {
+    .theme-toggle {
+      margin-left: auto;
+    }
+  }
+
+  .theme-toggle:hover {
+    color: var(--band-ink);
+    border-color: var(--band-muted);
+  }
+
+  svg {
+    grid-area: 1 / 1;
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: none;
+  }
+
+  .theme-toggle:not([data-mode]) .i-system,
+  .theme-toggle[data-mode='system'] .i-system,
+  .theme-toggle[data-mode='light'] .i-light,
+  .theme-toggle[data-mode='dark'] .i-dark {
+    display: block;
+  }
+</style>

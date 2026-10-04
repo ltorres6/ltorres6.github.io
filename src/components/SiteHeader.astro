@@ -1,0 +1,100 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { nav, site } from '@/data/site';
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/">
+      {site.name} <small>{site.credential}</small>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isCurrent(item.href) ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--band);
+    color: var(--band-ink);
+    border-bottom: 1px solid var(--band-rule);
+    view-transition-name: site-header;
+  }
+
+  .wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem 2rem;
+    flex-wrap: wrap;
+    padding-block: 0.9rem;
+  }
+
+  .wordmark {
+    font: 600 1.25rem/1 var(--font-display);
+    color: var(--band-ink);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .wordmark small {
+    font: 500 0.7rem/1 var(--font-mono);
+    color: var(--band-gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin-left: auto;
+    font-size: 0.9375rem;
+  }
+
+  .site-nav a {
+    color: var(--band-muted);
+    text-decoration: none;
+    padding-block: 0.25rem;
+    border-bottom: 2px solid transparent;
+  }
+
+  .site-nav a:hover {
+    color: var(--band-ink);
+  }
+
+  .site-nav a[aria-current='page'] {
+    color: var(--band-ink);
+    border-bottom-color: var(--band-gold);
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      position: static;
+    }
+
+    .site-nav {
+      order: 3;
+      width: 100%;
+      margin-left: 0;
+      gap: 0.25rem 1.1rem;
+    }
+  }
+</style>

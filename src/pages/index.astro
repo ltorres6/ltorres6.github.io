@@ -1,0 +1,392 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import KSpacePortrait from '@/components/KSpacePortrait.astro';
+import SectionHead from '@/components/SectionHead.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import PublicationItem from '@/components/PublicationItem.astro';
+import { site } from '@/data/site';
+import { education } from '@/data/resume';
+import { getPublications, publicationStats } from '@/lib/publications';
+
+const pubs = await getPublications();
+const stats = publicationStats(pubs);
+const selected = pubs.filter((p) => p.data.selected);
+const featured = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  honorificSuffix: site.credential,
+  url: Astro.site?.href,
+  jobTitle: site.currentTitle,
+  worksFor: {
+    '@type': 'Organization',
+    name: site.employer.name,
+    url: site.employer.url,
+  },
+  alumniOf: [...new Set(education.map((e) => e.school))].map((name) => ({
+    '@type': 'CollegeOrUniversity',
+    name,
+  })),
+  sameAs: Object.values(site.links),
+};
+---
+
+<BaseLayout jsonLd={jsonLd}>
+  <section class="hero" slot="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="label">{site.roles.join(' · ')}</p>
+        <h1 id="hero-h">
+          Hi, I'm <em>Luis</em>.
+        </h1>
+        <p class="lede">
+          I'm a medical physicist. My PhD at UW–Madison was on imaging pulmonary
+          structure and function using MRI. I'm now a {site.currentTitle} at{' '}
+          <a href={site.employer.url}>{site.employer.name}</a>, where I build
+          imaging workflows for multi-site research studies. I live in{' '}
+          {site.location}.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/resume/">
+            View résumé
+          </a>
+          <a class="btn btn-secondary" href="/publications/">
+            Publications
+          </a>
+        </div>
+        <p class="email">{site.email}</p>
+      </div>
+      <KSpacePortrait />
+    </div>
+  </section>
+
+  <section aria-labelledby="sides-h">
+    <SectionHead
+      id="sides-h"
+      title="Two sides of the same work"
+      link={{ href: '/about/', label: 'More about me' }}
+    />
+    <div class="two-sides">
+      <div class="side">
+        <p class="label">Research</p>
+        <h3>Imaging lung structure and function with MRI.</h3>
+        <p>
+          My PhD work combined ultrashort echo time MRI, dynamic contrast
+          perfusion and hyperpolarized xenon to follow diseases like idiopathic
+          pulmonary fibrosis over time.
+        </p>
+        <ul>
+          <li>Motion compensation for free-breathing UTE lung MRI</li>
+          <li>DCE-MRI perfusion in IPF and prematurity</li>
+          <li>
+            Hyperpolarized <sup>129</sup>Xe gas-exchange imaging
+          </li>
+        </ul>
+        <p class="figures mono">
+          <span>
+            <strong>{stats.publications}</strong> publications
+          </span>
+          <span>
+            <strong>{stats.citations}</strong> citations
+          </span>
+          <span>
+            h-index <strong>{stats.hIndex}</strong>
+          </span>
+        </p>
+      </div>
+      <div class="side">
+        <p class="label">Engineering</p>
+        <h3>Building the tools that run imaging research.</h3>
+        <p>
+          At Flywheel I design containerized imaging workflows used across
+          multi-institution studies, and partner with research sites to turn
+          their algorithms into validated, automated pipelines.
+        </p>
+        <ul>
+          <li>Imaging workflows across MRI, CT, PET and ophthalmic data</li>
+          <li>Physics-informed scan classification for MR, CT and PET</li>
+          <li>Fine-tuning medical foundation models (MedSigLIP)</li>
+        </ul>
+        <p class="figures mono">
+          <span>
+            <strong>Python</strong>
+          </span>
+          <span>
+            <strong>Docker</strong> / Kubernetes
+          </span>
+          <span>
+            <strong>CI/CD</strong>
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="work-h">
+    <SectionHead
+      id="work-h"
+      title="Selected work"
+      link={{ href: '/work/', label: 'All projects' }}
+    />
+    <div class="projects">
+      {featured.map((p) => (
+        <ProjectCard project={p} />
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="pubs-h">
+    <SectionHead
+      id="pubs-h"
+      title="Selected publications"
+      link={{
+        href: '/publications/',
+        label: `All ${stats.publications} publications`,
+      }}
+    />
+    <ol class="pubs">
+      {selected.map((pub) => (
+        <PublicationItem pub={pub} />
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="edu-h">
+    <SectionHead
+      id="edu-h"
+      title="Education"
+      link={{ href: '/resume/', label: 'Full résumé' }}
+    />
+    <ol class="edu">
+      {education.map((e) => (
+        <li>
+          <h3>{e.degree}</h3>
+          {e.date && <span class="when">{e.date.slice(-4)}</span>}
+          <p>
+            {e.school}
+            {e.detail && e.degree.startsWith('PhD') && (
+              <>
+                {' · '}
+                <span class="thesis">{e.detail}</span>
+              </>
+            )}
+          </p>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: var(--band);
+    color: var(--band-ink);
+  }
+
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 2.5rem 4rem;
+    align-items: center;
+    padding-block: clamp(3rem, 8vw, 5.5rem);
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 40rem;
+  }
+
+  .hero .label {
+    color: var(--band-gold);
+  }
+
+  .hero h1 {
+    font-size: var(--step-4);
+    font-weight: 400;
+    color: var(--band-ink);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--band-gold);
+  }
+
+  .lede {
+    color: var(--band-muted);
+    font-size: 1.125rem;
+    max-width: 36rem;
+  }
+
+  .lede a {
+    color: var(--band-ink);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero .btn-secondary {
+    color: var(--band-ink);
+    border-color: var(--band-rule);
+  }
+
+  .hero .btn-secondary:hover {
+    border-color: var(--band-muted);
+  }
+
+  .email {
+    font: 400 0.875rem/1.4 var(--font-mono);
+    color: var(--band-muted);
+  }
+
+  /* two sides */
+  .two-sides {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .side {
+    display: grid;
+    gap: 0.9rem;
+    align-content: start;
+  }
+
+  .side:first-child {
+    padding-right: clamp(1.5rem, 4vw, 3.5rem);
+    border-right: 1px solid var(--rule);
+  }
+
+  .side:last-child {
+    padding-left: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .side .label {
+    color: var(--gold-ink);
+  }
+
+  .side h3 {
+    font-size: var(--step-2);
+    font-weight: 400;
+  }
+
+  .side p {
+    color: var(--muted);
+  }
+
+  .side ul {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .side li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .side li::before {
+    content: '';
+    flex: none;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--gold);
+    transform: translateY(-0.15rem) rotate(45deg);
+  }
+
+  .figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .figures strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .pubs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* education */
+  .edu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .edu li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .edu li:first-child {
+    padding-top: 0;
+  }
+
+  .edu h3 {
+    font-size: var(--step-1);
+  }
+
+  .edu p {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    grid-column: 1;
+  }
+
+  .when {
+    font: 500 0.875rem/1.6 var(--font-mono);
+    color: var(--gold-ink);
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .thesis {
+    font-style: italic;
+  }
+
+  @media (max-width: 760px) {
+    .hero .wrap,
+    .two-sides {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .two-sides {
+      gap: 2rem;
+    }
+
+    .side:first-child {
+      padding-right: 0;
+      border-right: 0;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .side:last-child {
+      padding-left: 0;
+    }
+  }
+</style>

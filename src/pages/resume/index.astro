@@ -1,0 +1,379 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PublicationItem from '@/components/PublicationItem.astro';
+import { site } from '@/data/site';
+import {
+  education,
+  experience,
+  languages,
+  resumePublications,
+  skills,
+  training,
+} from '@/data/resume';
+import { getPublications } from '@/lib/publications';
+
+const all = await getPublications();
+const pubs = resumePublications.map((id) => {
+  const p = all.find((x) => x.id === id);
+  if (!p) throw new Error(`Résumé lists unknown publication "${id}"`);
+  return p;
+});
+const linkText = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '');
+---
+
+<BaseLayout
+  title="Résumé"
+  description={`Résumé of ${site.fullName}: ${site.currentTitle} at ${site.employer.name}, PhD in Medical Physics from UW–Madison.`}
+>
+  <header class="resume-head">
+    <div class="who">
+      <h1>{site.fullName}</h1>
+      <p class="title">{site.roles.join(' · ')}</p>
+    </div>
+    <ul class="contact mono">
+      <li>{site.location}</li>
+      <li>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </li>
+      <li>
+        <a href={site.links.linkedin}>{linkText(site.links.linkedin)}</a>
+      </li>
+      <li>
+        <a href={site.links.github}>{linkText(site.links.github)}</a>
+      </li>
+      <li>
+        <a href={site.links.gitlab}>{linkText(site.links.gitlab)}</a>
+      </li>
+    </ul>
+    <p class="actions screen-only">
+      <a class="btn btn-primary" href="/luis-torres-resume.pdf" download>
+        Download PDF
+      </a>
+    </p>
+  </header>
+
+  <div class="resume">
+    <div class="main">
+      <section aria-labelledby="exp-h">
+        <h2 id="exp-h" class="label">
+          Experience
+        </h2>
+        <ol class="roles">
+          {experience.map((r) => (
+            <li class="role">
+              <div class="role-head">
+                <h3>{r.org}</h3>
+                <p class="dates mono">
+                  {r.start} – {r.end}
+                </p>
+              </div>
+              <p class="titles">{r.titles.join(' · ')}</p>
+              {r.summary && <p class="summary">{r.summary}</p>}
+              <ul class="highlights">
+                {r.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="pubs-h">
+        <h2 id="pubs-h" class="label">
+          Selected publications
+        </h2>
+        <ol class="pubs">
+          {pubs.map((pub) => (
+            <PublicationItem pub={pub} compact />
+          ))}
+        </ol>
+        <p class="more screen-only">
+          <a href="/publications/">All publications</a>
+        </p>
+      </section>
+    </div>
+
+    <aside class="side">
+      <section aria-labelledby="edu-h">
+        <h2 id="edu-h" class="label">
+          Education
+        </h2>
+        <ol class="plain">
+          {education.map((e) => (
+            <li class="degree">
+              <h3>{e.degree}</h3>
+              {e.detail && <p class="detail">{e.detail}</p>}
+              <p>{e.school}</p>
+              <p class="mono muted">
+                {[e.place, e.date].filter(Boolean).join(' · ')}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="skills-h">
+        <h2 id="skills-h" class="label">
+          Skills
+        </h2>
+        {skills.map((s) => (
+          <div class="skill-group">
+            <h3>{s.group}</h3>
+            {s.note && <p class="note muted">{s.note}</p>}
+            <ul class="plain">
+              {s.items.map((i) => (
+                <li>{i}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      <section aria-labelledby="train-h">
+        <h2 id="train-h" class="label">
+          Training
+        </h2>
+        <ul class="plain">
+          {training.map((t) => (
+            <li>{t}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="lang-h">
+        <h2 id="lang-h" class="label">
+          Languages
+        </h2>
+        <ul class="plain">
+          {languages.map((l) => (
+            <li>{l}</li>
+          ))}
+        </ul>
+      </section>
+    </aside>
+  </div>
+</BaseLayout>
+
+<style>
+  .resume-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem 2rem;
+    align-items: end;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .who {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  h1 {
+    font-size: var(--step-4);
+    font-weight: 400;
+  }
+
+  .title {
+    color: var(--gold-ink);
+    font: 500 var(--step--1) / 1.4 var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .contact {
+    grid-column: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    color: var(--muted);
+  }
+
+  .contact a {
+    color: var(--ink);
+  }
+
+  .actions {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  .resume {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    gap: 3rem 4rem;
+    margin-top: -1.5rem;
+  }
+
+  .main,
+  .side {
+    display: grid;
+    gap: 2.5rem;
+    align-content: start;
+  }
+
+  h2.label {
+    color: var(--gold-ink);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+
+  .roles,
+  .pubs,
+  .plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .roles {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .role {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .role-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  .role h3 {
+    font-size: var(--step-2);
+  }
+
+  .dates {
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .titles {
+    font-weight: 600;
+  }
+
+  .summary {
+    color: var(--muted);
+  }
+
+  .highlights {
+    margin: 0.4rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.45rem;
+    max-width: var(--measure);
+  }
+
+  .highlights li::marker {
+    color: var(--gold);
+  }
+
+  .more {
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .side {
+    font-size: 0.9375rem;
+  }
+
+  .side h3 {
+    font: 600 1rem/1.4 var(--font-body);
+  }
+
+  .degree {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .degree + .degree {
+    margin-top: 1.1rem;
+  }
+
+  .detail {
+    font-style: italic;
+  }
+
+  .muted {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .note {
+    font-size: 0.8125rem;
+  }
+
+  .skill-group + .skill-group {
+    margin-top: 1rem;
+  }
+
+  .skill-group .plain,
+  .side > section > .plain {
+    display: grid;
+    gap: 0.2rem;
+    margin-top: 0.35rem;
+  }
+
+  @media (max-width: 860px) {
+    .resume,
+    .resume-head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .actions {
+      grid-column: 1;
+      grid-row: auto;
+    }
+  }
+
+  @media print {
+    .resume-head {
+      grid-template-columns: minmax(0, 1fr);
+      padding-bottom: 10pt;
+    }
+
+    .resume {
+      grid-template-columns: minmax(0, 1fr) 15rem;
+      gap: 0 2rem;
+      margin-top: 0;
+      line-height: 1.45;
+    }
+
+    .main,
+    .side {
+      gap: 14pt;
+    }
+
+    .roles {
+      gap: 10pt;
+    }
+
+    h2.label {
+      margin-bottom: 6pt;
+      padding-bottom: 3pt;
+    }
+
+    .highlights {
+      gap: 2pt;
+    }
+
+    .role,
+    .degree,
+    .skill-group {
+      break-inside: avoid;
+    }
+  }
+</style>

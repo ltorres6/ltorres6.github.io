@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luistorresphd.com/sitemap-index.xml
